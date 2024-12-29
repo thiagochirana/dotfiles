@@ -56,6 +56,6 @@ alias rs="rails s"
 set -a
 source ~/.env
 set +a
-alias zshmessage="echo '\033[0;32m.envcarregado com sucesso!'"
+alias zshmessage="echo '\033[0;32m.env carregado com sucesso!'"
 zshmessage
 
