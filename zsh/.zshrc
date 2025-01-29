@@ -30,6 +30,7 @@ export EDITOR=nvim
 
 # My OCI VM
 alias oca_vm="ssh -i ~/.ssh/home_server curumin@ssh.devcurumin.com.br"
+alias tunel_db_vm="ssh -i ~/.ssh/vm_db.key -L 54321:localhost:10101 ubuntu@64.181.161.234"
 
 # Eza Commands
 eza_params=('--git' '--icons' '--classify' '--group-directories-first' '--time-style=long-iso' '--group' '--color-scale')
