@@ -59,6 +59,7 @@ alias rap="rails assets:precompile"
 alias rpd="rails assets:precompile && ./bin/dev"
 alias rc="rails console"
 alias rs="rails s"
+alias rr="rails assets:clobber assets:precompile && ./bin/dev"
 
 # load env
 set -a
