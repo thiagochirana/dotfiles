@@ -26,7 +26,7 @@ alias alac="vim ~/.config/alacritty/alacritty.toml"
 
 export EDITOR=nvim
 
-. "$HOME/.asdf/asdf.sh"
+# . "$HOME/.asdf/asdf.sh"
 
 # My OCI VM
 alias oca_vm="ssh -i ~/.ssh/home_server curumin@ssh.devcurumin.com.br"
@@ -73,3 +73,5 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# mise config
+eval "$(/home/dev/.local/bin/mise activate zsh)"
