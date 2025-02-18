@@ -75,3 +75,5 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # mise config
 eval "$(/home/dev/.local/bin/mise activate zsh)"
+
+[ -f "/home/dev/.ghcup/env" ] && . "/home/dev/.ghcup/env" # ghcup-env
