@@ -22,3 +22,6 @@ km.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 km.set("n", "<leader>th", "<cmd>tabprevious<CR>", { desc = "Go to previous tab" })
 km.set("n", "<leader>tl", "<cmd>tabnext<CR>", { desc = "Go to next tab" })
 km.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Duplicate tab" })
+
+-- yank
+km.set("n", "<leader>ya", "ggVGy", { desc = "Copy entire window content" })
