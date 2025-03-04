@@ -60,6 +60,9 @@ alias rpd="rails assets:precompile && ./bin/dev"
 alias rc="rails console"
 alias rs="rails s"
 alias rr="rails assets:clobber assets:precompile && ./bin/dev"
+alias rp="rails db:prepare"
+alias rfl="rails db:fixtures:load"
+alias rdd="rails db:drop && rm db/schema.rb"
 
 # load env
 set -a
@@ -75,5 +78,4 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # mise config
 eval "$(/home/dev/.local/bin/mise activate zsh)"
-
-[ -f "/home/dev/.ghcup/env" ] && . "/home/dev/.ghcup/env" # ghcup-env
+[ -f "/home/dev/.ghcup/env" ] && . "/home/dev/.ghcup/env" # ghcup-envexport PATH="$HOME/.local/share/mise/shims:$PATH"

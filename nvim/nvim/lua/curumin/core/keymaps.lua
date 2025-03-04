@@ -24,4 +24,10 @@ km.set("n", "<leader>tl", "<cmd>tabnext<CR>", { desc = "Go to next tab" })
 km.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Duplicate tab" })
 
 -- yank
-km.set("n", "<leader>ya", "ggVGy", { desc = "Copy entire window content" })
+km.set("n", "<leader>ya", "ggVG", { desc = "Select all" })
+km.set(
+	"n",
+	"<leader>yb",
+	":lua require('nvim-treesitter.textobjects.select').select_textobject('@block.outer')<CR>",
+	{ desc = "Select block" }
+)
