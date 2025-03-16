@@ -22,7 +22,7 @@ alias i3l="i3 reload && i3 restart"
 alias spi="sudo pacman -S"
 alias github="eval '$(ssh-agent)' > /dev/null && ssh-add ~/.ssh/github > /dev/null 2>&1 && echo '\033[0;32mChave SSH do GitHub carregada com sucesso!\033[0m'"
 alias bgl="sh .fehbg"
-alias alac="vim ~/.config/alacritty/alacritty.toml"
+alias alac="nvim ~/.config/alacritty/alacritty.toml"
 
 export EDITOR=nvim
 

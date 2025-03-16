@@ -187,7 +187,7 @@ exec_always --no-startup-id sh $HOME/.screenlayout/duas_telas.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 for_window [class="^.*"] border pixel 0
-gaps inner 10
+gaps inner 5
 gaps outer 0
 
 bindsym $mod+p exec flameshot gui
@@ -198,6 +198,7 @@ bindsym Mod4+Tab exec rofi -show window
 
 bindsym $mod+Mod4+t exec sh $HOME/.screenlayout/duas_telas.sh
 bindsym $mod+Mod4+y exec sh $HOME/.screenlayout/uma_tela.sh
+bindsym $mod+Mod4+u exec sh $HOME/.screenlayout/uma_tela_CS.sh
 bindsym $mod+Mod4+d exec discord
 bindsym $mod+Mod4+f exec firefox
 bindsym $mod+Mod4+o exec obs
