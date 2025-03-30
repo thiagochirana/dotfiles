@@ -7,7 +7,7 @@ fi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell" # set by `omz`
+ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -16,10 +16,11 @@ alias zshc="nvim ~/.zshrc"
 alias zshl="source ~/.zshrc"
 alias zshs="cat ~/.zshrc"
 alias sys="sudo systemctl"
-alias see="bat"
+alias see="batcat"
 alias i3c="nvim ~/.config/i3/config"
 alias i3l="i3 reload && i3 restart"
 alias spi="sudo pacman -S"
+alias sai="sudo apt install -y "
 alias github="eval '$(ssh-agent)' > /dev/null && ssh-add ~/.ssh/github > /dev/null 2>&1 && echo '\033[0;32mChave SSH do GitHub carregada com sucesso!\033[0m'"
 alias bgl="sh .fehbg"
 alias alac="nvim ~/.config/alacritty/alacritty.toml"
@@ -63,6 +64,7 @@ alias rr="rails assets:clobber assets:precompile && ./bin/dev"
 alias rp="rails db:prepare"
 alias rfl="rails db:fixtures:load"
 alias rdd="rails db:drop && rm db/schema.rb"
+alias rrst="rdd && rp && rfl FIXTURES=users && rr"
 
 # load env
 set -a
