@@ -12,20 +12,21 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-alias zshc="nvim ~/.zshrc"
+export EDITOR=vim
+
+alias zshc="$EDITOR ~/.zshrc"
 alias zshl="source ~/.zshrc"
 alias zshs="cat ~/.zshrc"
 alias sys="sudo systemctl"
 alias see="batcat"
-alias i3c="nvim ~/.config/i3/config"
+alias i3c="$EDITOR ~/.config/i3/config"
 alias i3l="i3 reload && i3 restart"
 alias spi="sudo pacman -S"
 alias sai="sudo apt install -y "
 alias github="eval '$(ssh-agent)' > /dev/null && ssh-add ~/.ssh/github > /dev/null 2>&1 && echo '\033[0;32mChave SSH do GitHub carregada com sucesso!\033[0m'"
 alias bgl="sh .fehbg"
-alias alac="nvim ~/.config/alacritty/alacritty.toml"
+alias alac="$EDITOR ~/.config/alacritty/alacritty.toml"
 
-export EDITOR=nvim
 
 # . "$HOME/.asdf/asdf.sh"
 
