@@ -1,4 +1,4 @@
-sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev libffi-dev libyaml-dev libpq-dev curl vim git zsh wget
+sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev libffi-dev libyaml-dev libpq-dev curl vim git zsh wget sqlite3
 
 sudo apt update -y
 sudo apt install -y gpg

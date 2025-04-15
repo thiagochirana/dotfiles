@@ -14,7 +14,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin" # release nvim
 
-export EDITOR=vim
+export EDITOR=nvim
 
 alias zshc="$EDITOR ~/.zshrc"
 alias zshl="source ~/.zshrc"
@@ -68,6 +68,7 @@ alias rp="rails db:prepare"
 alias rfl="rails db:fixtures:load"
 alias rdd="rails db:drop && rm db/schema.rb"
 alias rrst="rdd && rp && rfl FIXTURES=users && rr"
+alias bi="bundle install"
 
 # load env
 set -a
