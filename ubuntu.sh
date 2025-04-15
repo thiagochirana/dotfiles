@@ -1,7 +1,7 @@
 sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev libffi-dev libyaml-dev libpq-dev curl vim git zsh wget sqlite3
 
 sudo apt update -y
-sudo apt install -y gpg
+sudo apt install -y gpg pkg-config libsqlite3-dev
 
 sudo mkdir -p /etc/apt/keyrings
 wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
