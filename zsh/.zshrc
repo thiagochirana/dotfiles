@@ -8,7 +8,10 @@ fi
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
-plugins=(git)
+plugins=(
+  git
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -29,6 +32,12 @@ alias github="eval '$(ssh-agent)' > /dev/null && ssh-add ~/.ssh/github > /dev/nu
 alias bgl="sh .fehbg"
 alias alac="$EDITOR ~/.config/alacritty/alacritty.toml"
 
+alias hyc="$EDITOR ~/.config/hypr/hyprland.conf"
+alias hyl="hyprctl reload"
+alias hy="hyprctl"
+alias wayc="$EDITOR ~/.config/waybar/config"
+alias wayr="pkill -SIGUSR2 waybar"
+alias waystl="$EDITOR /etc/xdg/waybar/style.css"
 
 # . "$HOME/.asdf/asdf.sh"
 
