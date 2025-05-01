@@ -38,6 +38,8 @@ alias hy="hyprctl"
 alias wayc="$EDITOR ~/.config/waybar/config"
 alias wayr="pkill -SIGUSR2 waybar"
 alias waystl="$EDITOR /etc/xdg/waybar/style.css"
+alias polyc="$EDITOR ~/.config/polybar/config.ini"
+alias nvc="$EDITOR ~/.config/nvim"
 
 # . "$HOME/.asdf/asdf.sh"
 
