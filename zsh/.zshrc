@@ -19,6 +19,13 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin" # release nvim
 
 export EDITOR=nvim
 
+# load env
+set -a
+source ~/.env
+set +a
+alias zshmessage="echo '\033[0;32m.env carregado com sucesso!'"
+zshmessage
+
 alias zshc="$EDITOR ~/.zshrc"
 alias zshl="source ~/.zshrc"
 alias zshs="cat ~/.zshrc"
@@ -81,12 +88,7 @@ alias rdd="rails db:drop && rm db/schema.rb"
 alias rrst="rdd && rp && rfl FIXTURES=users && rr"
 alias bi="bundle install"
 
-# load env
-set -a
-source ~/.env
-set +a
-alias zshmessage="echo '\033[0;32m.env carregado com sucesso!'"
-zshmessage
+alias hrk_prod="heroku run rails console -a $HEROKU_PROD"
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 

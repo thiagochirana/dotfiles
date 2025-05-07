@@ -8,6 +8,7 @@ return {
       view = {
         width = 40,
         relativenumber = false,
+        side = "right",
       },
       renderer = {
         icons = {

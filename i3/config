@@ -9,7 +9,9 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
+set $sec_mod Shift
+set $alt_mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -49,7 +51,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+$sec_mod+q kill
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -70,16 +72,16 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ccedilla move right
+bindsym $mod+$sec_mod+j move left
+bindsym $mod+$sec_mod+k move down
+bindsym $mod+$sec_mod+l move up
+bindsym $mod+$sec_mod+ccedilla move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+$sec_mod+Left move left
+bindsym $mod+$sec_mod+Down move down
+bindsym $mod+$sec_mod+Up move up
+bindsym $mod+$sec_mod+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -96,7 +98,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+$sec_mod+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -133,23 +135,23 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+$sec_mod+1 move container to workspace number $ws1
+bindsym $mod+$sec_mod+2 move container to workspace number $ws2
+bindsym $mod+$sec_mod+3 move container to workspace number $ws3
+bindsym $mod+$sec_mod+4 move container to workspace number $ws4
+bindsym $mod+$sec_mod+5 move container to workspace number $ws5
+bindsym $mod+$sec_mod+6 move container to workspace number $ws6
+bindsym $mod+$sec_mod+7 move container to workspace number $ws7
+bindsym $mod+$sec_mod+8 move container to workspace number $ws8
+bindsym $mod+$sec_mod+9 move container to workspace number $ws9
+bindsym $mod+$sec_mod+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+$sec_mod+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+$sec_mod+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+$sec_mod+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -194,12 +196,13 @@ bindsym $mod+p exec flameshot gui
 # bindsym $mod+Return exec konsole
 bindsym $mod+Return exec alacritty
 bindsym $mod+d exec rofi -show drun
-bindsym Mod4+Tab exec rofi -show window 
+bindsym $alt_mod+Tab exec rofi -show window 
 
-bindsym $mod+Mod4+t exec sh $HOME/.screenlayout/duas_telas.sh
-bindsym $mod+Mod4+y exec sh $HOME/.screenlayout/uma_tela.sh
-bindsym $mod+Mod4+u exec sh $HOME/.screenlayout/uma_tela_CS.sh
-bindsym $mod+Mod4+d exec vesktop
-bindsym $mod+Mod4+f exec firefox
-bindsym $mod+Mod4+o exec obs
+bindsym $mod+$alt_mod+t exec sh $HOME/.screenlayout/duas_telas.sh
+bindsym $mod+$alt_mod+y exec sh $HOME/.screenlayout/uma_tela.sh
+bindsym $mod+$alt_mod+u exec sh $HOME/.screenlayout/uma_tela_CS.sh
+bindsym $mod+$alt_mod+d exec vesktop
+bindsym $mod+$alt_mod+e exec dolphin
+bindsym $mod+$alt_mod+f exec firefox
+bindsym $mod+$alt_mod+o exec obs
 
