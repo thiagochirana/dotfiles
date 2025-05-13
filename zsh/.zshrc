@@ -87,6 +87,7 @@ alias rfl="rails db:fixtures:load"
 alias rdd="rails db:drop && rm db/schema.rb"
 alias rrst="rdd && rp && rfl FIXTURES=users && rr"
 alias bi="bundle install"
+alias restart_rails="rm -rf * && rm -rf .github .kamal .rub* .yarn .dockerignore .gitattributes .node-version .rspec && rm -rf .pnp*"
 
 alias hrk_prod="heroku run rails console -a $HEROKU_PROD"
 

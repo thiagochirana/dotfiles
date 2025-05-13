@@ -4,10 +4,10 @@ return {
     config = function()
       require("gitsigns").setup({
         signs = {
-          add          = { text = "▎" },
-          change       = { text = "▎" },
-          delete       = { text = "契" },
-          topdelete    = { text = "契" },
+          add          = { text = "➕" },
+          change       = { text = "🔁" },
+          delete       = { text = "🗑️" },
+          topdelete    = { text = "🗑️" },
           changedelete = { text = "▎" },
         },
         signcolumn = true,
