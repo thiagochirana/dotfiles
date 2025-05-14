@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo pacman -S dunst
+
 # Get absolute path of current directory
 DIR_LOCAL=$(pwd)
 
