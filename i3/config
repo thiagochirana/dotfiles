@@ -186,6 +186,7 @@ bindsym $mod+r mode "resize"
 
 exec --no-startup-id ~/.fehbg &
 exec --no-startup-id dunst
+exec --no-startup-id setxkbmap -layout br
 exec_always --no-startup-id sh $HOME/.screenlayout/duas_telas.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

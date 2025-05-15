@@ -39,6 +39,9 @@ alias github="eval '$(ssh-agent)' > /dev/null && ssh-add ~/.ssh/github > /dev/nu
 alias bgl="sh .fehbg"
 alias alac="$EDITOR ~/.config/alacritty/alacritty.toml"
 
+alias notify="killall dunst && dunst &"
+alias notc="nvim ~/.config/dunst/dunstrc"
+
 alias hyc="$EDITOR ~/.config/hypr/hyprland.conf"
 alias hyl="hyprctl reload"
 alias hy="hyprctl"
@@ -46,6 +49,7 @@ alias wayc="$EDITOR ~/.config/waybar/config"
 alias wayr="pkill -SIGUSR2 waybar"
 alias waystl="$EDITOR /etc/xdg/waybar/style.css"
 alias polyc="$EDITOR ~/.config/polybar/config.ini"
+alias polyl="polybar-msg cmd restart"
 alias nvc="$EDITOR ~/.config/nvim"
 
 # . "$HOME/.asdf/asdf.sh"
