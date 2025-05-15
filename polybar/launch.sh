@@ -1,22 +1,19 @@
 #!/usr/bin/env bash
 
-# Terminate already running bar instances
-# If all your bars have ipc enabled, you can use 
+# Termina qualquer instância rodando
 polybar-msg cmd quit
-# Otherwise you can use the nuclear option:
-# killall -q polybar
 
-# Launch bar1 and bar2
-echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
-polybar bar1 2>&1 | tee -a /tmp/polybar1.log & disown
-polybar bar2 2>&1 | tee -a /tmp/polybar2.log & disown
+# Espera um pouco para garantir que fechou
+sleep 1
 
-if type "xrandr"; then
+if type "xrandr" > /dev/null; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload main &
+    MONITOR=$m polybar --reload top &
+    MONITOR=$m polybar --reload bottom &
   done
 else
-  polybar --reload main &
+  polybar --reload top &
+  polybar --reload bottom &
 fi
 
-echo "Bars launched..."
+echo "Top and Bottom bars launched..."
