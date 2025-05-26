@@ -2,6 +2,7 @@ local g = vim.g
 local opt = vim.opt
 
 opt.number = true           -- Show line number
+opt.relativenumber = true   -- Show relative line number
 opt.showmatch = true        -- Highlight matching parenthesis
 opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
 opt.colorcolumn = '120'     -- Line lenght marker at 80 columns

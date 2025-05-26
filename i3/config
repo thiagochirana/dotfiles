@@ -78,10 +78,10 @@ bindsym $mod+$sec_mod+l move up
 bindsym $mod+$sec_mod+ccedilla move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+$sec_mod+Left move left
-bindsym $mod+$sec_mod+Down move down
-bindsym $mod+$sec_mod+Up move up
-bindsym $mod+$sec_mod+Right move right
+#bindsym $mod+$sec_mod+Left move left
+#bindsym $mod+$sec_mod+Down move down
+#bindsym $mod+$sec_mod+Up move up
+#bindsym $mod+$sec_mod+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -187,12 +187,17 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id ~/.fehbg &
 exec --no-startup-id dunst
-exec --no-startup-id setxkbmap -layout br
+exec --no-startup-id setxkbmap -model abnt2 -layout br
 exec_always --no-startup-id sh $HOME/.screenlayout/duas_telas.sh
 
 for_window [class="^.*"] border pixel 0
 gaps inner 5
 gaps outer 0
+
+
+bindsym $mod+$sec_mod+Right exec brightnessctl set 5+%
+bindsym $mod+$sec_mod+Left exec brightnessctl set 5-%
+bindsym $mod+$sec_mod+m exec sudo brilho
 
 bindsym $mod+p exec flameshot gui
 # bindsym $mod+Return exec konsole

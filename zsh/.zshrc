@@ -94,7 +94,7 @@ alias rrst="rdd && rp && rfl FIXTURES=users && rr"
 alias bi="bundle install"
 alias restart_rails="rm -rf * && rm -rf .github .kamal .rub* .yarn .dockerignore .gitattributes .node-version .rspec && rm -rf .pnp*"
 
-alias hrk_prod="heroku run rails console -a $HEROKU_PROD"
+alias hrk="heroku run rails console -a $HEROKU_APP"
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 

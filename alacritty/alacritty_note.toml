@@ -8,9 +8,9 @@ blur = true
 decorations_theme_variant = "Dark"
 
 [font]
-normal = { family =  "MesloLGLNerdFont", style = "regular" }
-bold = { family =  "MesloLGLNerdFont", style = "bold" }
-italic = { family =  "MesloLGLNerdFont", style = "italic" }
+normal = { family =  "SF Mono", style = "regular" }
+bold = { family =  "SF Mono", style = "bold" }
+italic = { family =  "SF Mono", style = "italic" }
 size = 9
 
 [colors]
@@ -18,7 +18,7 @@ draw_bold_text_with_bright_colors = true
 cursor = { text = "CellBackground" , cursor = "#a1a1a1" }
 
 [colors.primary]
-  background = "#111111"
+  background = "#000000"
   foreground = "#a2a2a2"
 
 [selection]

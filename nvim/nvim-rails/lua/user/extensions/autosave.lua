@@ -2,7 +2,7 @@ return {
     "pocco81/auto-save.nvim",
     config = function()
       require("auto-save").setup({
-        enabled = true,
+        enabled = false,
         execution_message = {
           message = function()
             return ("💾 autosave at " .. vim.fn.strftime("%H:%M:%S"))
