@@ -74,7 +74,7 @@ alias tree='eza --tree $eza_params'
 #Git commands
 alias git_return_with_reset="git reset --hard HEAD~1"
 alias git_return_wout_reset="git reset --soft HEAD~1"
-alias gfp="git fetch && git pull"
+alias gfp="git fetch --all && git pull"
 
 #Git config
 github #call to load github ssh key 
@@ -89,12 +89,12 @@ alias rs="rails s"
 alias rr="rails assets:clobber assets:precompile && ./bin/dev"
 alias rp="rails db:prepare"
 alias rfl="rails db:fixtures:load"
-alias rdd="rails db:drop && rm db/schema.rb"
+alias rddb="rails db:drop && rm db/schema.rb"
 alias rrst="rdd && rp && rfl FIXTURES=users && rr"
 alias bi="bundle install"
 alias restart_rails="rm -rf * && rm -rf .github .kamal .rub* .yarn .dockerignore .gitattributes .node-version .rspec && rm -rf .pnp*"
 
-alias hrk="heroku run rails console -a $HEROKU_APP"
+alias hrk="heroku run rails console"
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
