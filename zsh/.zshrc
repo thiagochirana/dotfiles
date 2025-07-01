@@ -1,1 +1,106 @@
-source <(curl -s https://raw.githubusercontent.com/thiagochirana/dotfiles/refs/heads/main/zsh/zsh_source)
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
+plugins=(
+  git
+  zsh-autosuggestions
+)
+
+source $ZSH/oh-my-zsh.sh
+
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin" # release nvim
+
+export EDITOR=nvim
+
+# load env
+set -a
+source ~/.env
+set +a
+alias zshmessage="echo '\033[0;32m.env carregado com sucesso!'"
+zshmessage
+
+alias zshc="$EDITOR ~/.zshrc"
+alias zshl="source ~/.zshrc"
+alias zshs="cat ~/.zshrc"
+alias sys="sudo systemctl"
+alias see="batcat"
+alias i3c="$EDITOR ~/.config/i3/config"
+alias i3l="i3 reload && i3 restart"
+alias i3logout="i3-msg exit"
+alias spi="sudo pacman -S"
+alias sai="sudo apt install -y "
+alias github="eval '$(ssh-agent)' > /dev/null && ssh-add ~/.ssh/github > /dev/null 2>&1 && echo '\033[0;32mChave SSH do GitHub carregada com sucesso!\033[0m'"
+alias bgl="sh .fehbg"
+alias alac="$EDITOR ~/.config/alacritty/alacritty.toml"
+
+alias notify="killall dunst && dunst &"
+alias notc="nvim ~/.config/dunst/dunstrc"
+
+alias hyc="$EDITOR ~/.config/hypr/hyprland.conf"
+alias hyl="hyprctl reload"
+alias hy="hyprctl"
+alias wayc="$EDITOR ~/.config/waybar/config"
+alias wayr="pkill -SIGUSR2 waybar"
+alias waystl="$EDITOR /etc/xdg/waybar/style.css"
+alias polyc="$EDITOR ~/.config/polybar/config.ini"
+alias polyl="polybar-msg cmd restart"
+alias nvc="$EDITOR ~/.config/nvim"
+
+# . "$HOME/.asdf/asdf.sh"
+
+# My OCI VM
+alias oca_vm="ssh -i ~/.ssh/home_server curumin@ssh.devcurumin.com.br"
+alias tunel_db_vm="ssh -i ~/.ssh/vm_db.key -L 54321:localhost:10101 ubuntu@64.181.161.234"
+
+# Eza Commands
+eza_params=('--git' '--icons' '--classify' '--group-directories-first' '--time-style=long-iso' '--group' '--color-scale')
+
+alias ls='eza $eza_params'
+alias l='eza --git-ignore $eza_params'
+alias ll='eza --all --header --long $eza_params'
+alias llm='eza --all --header --long --sort=modified $eza_params'
+alias la='eza -lbhHigUmuSa --header'
+alias lx='eza -lbhHigUmuSa@'
+alias lt='eza --tree $eza_params'
+alias tree='eza --tree $eza_params'
+
+#Git commands
+alias git_return_with_reset="git reset --hard HEAD~1"
+alias git_return_wout_reset="git reset --soft HEAD~1"
+alias gfp="git fetch --all && git pull"
+
+#Git config
+github #call to load github ssh key 
+
+#Rails 
+alias rd="./bin/dev"
+alias racp="rails assets:clobber assets:precompile"
+alias rap="rails assets:precompile"
+alias rpd="rails assets:precompile && ./bin/dev"
+alias rc="rails console"
+alias rs="rails s"
+alias rr="rails assets:clobber assets:precompile && ./bin/dev"
+alias rp="rails db:prepare db:seed"
+alias rfl="rails db:fixtures:load"
+alias rddb="rails db:drop && rm db/schema.rb"
+alias rrst="rdd && rp && rfl FIXTURES=users && rr"
+alias bi="bundle install"
+alias restart_rails="rm -rf * && rm -rf .github .kamal .rub* .yarn .dockerignore .gitattributes .node-version .rspec && rm -rf .pnp*"
+
+# heroku configuration
+alias hrk="heroku run rails console"
+
+# powelevel 10k config
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# mise config
+eval "$(mise activate zsh)"
+[ -f "/home/dev/.ghcup/env" ] && . "/home/dev/.ghcup/env" # ghcup-envexport PATH="$HOME/.local/share/mise/shims:$PATH"
