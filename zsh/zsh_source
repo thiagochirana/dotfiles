@@ -27,7 +27,7 @@ set +a
 alias zshmessage="echo '\033[0;32m.env carregado com sucesso!'"
 zshmessage
 
-alias zshc="$EDITOR ~/.zshrc"
+alias zshc="$EDITOR ~/dotfiles/zsh/zsh_config"
 alias zshl="source ~/.zshrc"
 alias zshs="cat ~/.zshrc"
 alias sys="sudo systemctl"
@@ -98,23 +98,7 @@ alias restart_rails="rm -rf * && rm -rf .github .kamal .rub* .yarn .dockerignore
 # heroku configuration
 alias hrk="heroku run rails console"
 
-heroku_kompra() {
-  export HEROKU_API_KEY="$HEROKU_KOMPRA_KEY"
-  export HEROKU_EMAIL="$HEROKU_KOMPRA_EMAIL"
-  echo "🔁 HEROKU → Kompra"
-}
-
-heroku_noqtua() {
-  export HEROKU_API_KEY="$HEROKU_NOQTUA_KEY"
-  export HEROKU_EMAIL="$HEROKU_NOQTUA_EMAIL"
-  echo "🔁 HEROKU → Noqtua"
-}
-
-heroku_kompra # by default now
-
-
 # powelevel 10k config
-
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
