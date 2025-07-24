@@ -10,7 +10,23 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 plugins=(
   git
+  ruby
+  rails
+  gem
+  heroku
+  mise
+  postgres
+  node
+  yarn
+  spring
+  vscode
+  archlinux
   zsh-autosuggestions
+  zsh-syntax-highlighting
+  fast-syntax-highlighting
+  zsh-autocomplete
+  eza
+  rake
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -81,7 +97,7 @@ github #call to load github ssh key
 
 #Rails 
 alias rd="./bin/dev"
-alias racp="rails assets:clobber assets:precompile"
+alias racp="rails assets:clobber && rm -rf tmp/cache && rm -rf public/assets public/packs public/cache && rails assets:precompile && rm public/assets/.manifest.json"
 alias rap="rails assets:precompile"
 alias rpd="rails assets:precompile && ./bin/dev"
 alias rc="rails console"

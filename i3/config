@@ -221,4 +221,5 @@ bindsym $mod+$alt_mod+d exec vesktop
 bindsym $mod+$alt_mod+e exec dolphin
 bindsym $mod+$alt_mod+f exec firefox
 bindsym $mod+$alt_mod+o exec obs
+bindsym $mod+$alt_mod+l exec i3lock
 
