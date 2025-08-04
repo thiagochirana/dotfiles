@@ -93,9 +93,9 @@ alias git_return_wout_reset="git reset --soft HEAD~1"
 alias gfp="git fetch --all && git pull"
 
 #Git config
-github #call to load github ssh key 
+github #call to load github ssh key
 
-#Rails 
+#Rails
 alias rd="./bin/dev"
 alias racp="rails assets:clobber && rm -rf tmp/cache && rm -rf public/assets public/packs public/cache && rails assets:precompile && rm public/assets/.manifest.json"
 alias rap="rails assets:precompile"
