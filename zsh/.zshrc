@@ -120,3 +120,5 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # mise config
 eval "$(mise activate zsh)"
 [ -f "/home/dev/.ghcup/env" ] && . "/home/dev/.ghcup/env" # ghcup-envexport PATH="$HOME/.local/share/mise/shims:$PATH"
+eval "$(~/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
