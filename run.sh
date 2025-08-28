@@ -13,6 +13,8 @@ SCRIPTS=(
     "bluetooth.sh"
     "fonts.sh"
     "dev.sh"
+    "zsh.sh"
+    "github.sh"
     "finish.sh"
 )
 
