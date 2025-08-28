@@ -3,6 +3,12 @@ set -euo pipefail
 
 # Caminho para a pasta arch
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)/arch"
+DOTFILES_DIR="$HOME/dotfiles"
+
+if [ ! -d "$DOTFILES_DIR" ]; then
+    /bin/bash "$SCRIPT_DIR/git.sh"
+    git clone https://github.com/thiagochirana/dotfiles.git "$DOTFILES_DIR"
+fi
 
 # Lista de scripts na ordem de execução
 SCRIPTS=(
