@@ -13,7 +13,7 @@ source ~/.local/share/omarchy/default/bash/rc
 export bash_files="$HOME/.cmd"
 export EDITOR="nvim"
 
-export git_cmd="$bash_files/.git"
+export git_cmd="$bash_files/gitc"
 export ruby_cmd="$bash_files/.ruby"
 
 source $git_cmd
