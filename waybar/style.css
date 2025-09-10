@@ -1,0 +1,230 @@
+
+@import "../omarchy/current/theme/waybar.css";
+
+@define-color bg rgba(255, 255, 255, 0.08); /* fundo quase transparente nos módulos */
+@define-color fore white;
+
+* {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'SF Mono';
+  font-size: 12px;
+  color: @fore;
+}
+
+/* barra transparente total */
+window#waybar {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+/* módulos lado esquerdo/direito com fundo quase transparente */
+.modules-left,
+.modules-right {
+  background-color: @bg;
+  color: @fore;
+  border-radius: 5px;
+  padding: 4px 6px;
+  margin: 4px;
+}
+
+/* workspaces */
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 2px;
+  min-width: 9px;
+  color: @fore;
+  background-color: @bg;
+  border-radius: 3px;
+}
+
+#workspaces button.empty {
+  opacity: 0.6;
+}
+
+/* animação gradiente rainbow */
+@keyframes rainbow {
+  0%   { color: #ff0000; } /* vermelho */
+  16%  { color: #ff7f00; } /* laranja */
+  33%  { color: #ffff00; } /* amarelo */
+  50%  { color: #00ff00; } /* verde */
+  66%  { color: #0000ff; } /* azul */
+  83%  { color: #8b00ff; } /* roxo */
+  100% { color: #ff0000; } /* volta pro vermelho */
+}
+
+/* workspace ativo com efeito arco-íris */
+#workspaces button.active button.visible {
+  animation: rainbow 5s linear infinite;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+
+/* módulos individuais */
+#tray,
+#cpu,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#custom-omarchy,
+#custom-update,
+#custom-expand-icon,
+#clock {
+  background-color: @bg;
+  color: @fore;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: 0 4px;
+}
+
+/* tooltip */
+tooltip {
+  padding: 2px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #38bdf8;
+  border-radius: 4px;
+}
+
+/* ajustes extras */
+#custom-update {
+  font-size: 10px;
+}
+
+
+#clock {
+  margin-left: 8.75px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+/* slider de brilho */
+#backlight-slider {
+  min-width: 100px;          /* largura do slider */
+  padding: 2px 6px;
+  margin: 0 4px;
+  border-radius: 4px;
+  background-color: @bg;
+}
+
+/* linha de fundo do slider */
+#backlight-slider trough {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  min-height: 6px;
+}
+
+/* parte preenchida */
+#backlight-slider trough highlight {
+  background-color: @fore;
+  border-radius: 4px;
+}
+
+/* botão do slider */
+#backlight-slider slider {
+  background-color: @fore;
+  border-radius: 50%;
+  min-height: 10px;
+  min-width: 10px;
+}
+
+
+/* ---------- CPU ---------- */
+#cpu.good {
+  color: #38bdf8; /* azul */
+}
+
+#cpu.okay {
+  color: #4DFA64
+}
+
+#cpu.warning {
+  color: #facc15; /* amarelo */
+}
+
+#cpu.critical {
+  animation: cpu-pulse 1s infinite;
+}
+
+@keyframes cpu-pulse {
+  0%   { color: #f87171; }  /* vermelho claro */
+  50%  { color: #dc2626; }  /* vermelho escuro */
+  100% { color: #f87171; }
+}
+
+/* ---------- MEMÓRIA ---------- */
+#memory.good {
+  color: #38bdf8; /* azul */
+}
+
+#memory.okay {
+  color: #4DFA64
+}
+
+#memory.warning {
+  color: #facc15; /* amarelo */
+}
+
+#memory.critical {
+  animation: mem-pulse 1s infinite;
+}
+
+@keyframes mem-pulse {
+  0%   { color: #fb923c; }  /* laranja */
+  50%  { color: #ea580c; }  /* laranja forte */
+  100% { color: #fb923c; }
+}
+
+
+/* ---------- BATTERY ---------- */
+#battery.good {
+  color: #38bdf8; /* azul */
+}
+
+#battery.okay {
+  color: #4dfa64; /* verde */
+}
+
+#battery.warning {
+  color: #facc15; /* amarelo */
+}
+
+#battery.critical {
+  animation: batt-critical-pulse 1s infinite;
+}
+
+@keyframes batt-critical-pulse {
+  0%   { color: #fb923c; }  /* laranja */
+  50%  { color: #ea580c; }  /* laranja forte */
+  100% { color: #fb923c; }
+}
+
+/* --- CHARGING --- */
+#battery.charging {
+  animation: batt-charging-glow 3s infinite;
+}
+
+@keyframes batt-charging-glow {
+  0%   { color: #014ba0; text-shadow: 0 0 2px #008000; }
+  50%  { color: #4ade80; text-shadow: 0 0 6px #4ade80; }
+  100% { color: #22c55e; text-shadow: 0 0 2px #22c55e; }
+}
+
+/* --- FULL --- */
+#battery.full {
+  animation: batt-full-glow 3s infinite;
+}
+
+@keyframes batt-full-glow {
+  0%   { color: #014ba0; text-shadow: 0 0 2px #008000; }
+  50%  { color: #60a5fa; text-shadow: 0 0 6px #60a5fa; }
+  100% { color: #38bdf8; text-shadow: 0 0 2px #38bdf8; }
+}
+
