@@ -23,8 +23,13 @@ source $ruby_cmd
 
 alias bashc="$EDITOR $HOME/.bashrc"
 alias bashl="source $HOME/.bashrc"
+alias bashs="bat $HOME/.bashrc"
+
 alias cls="clear"
 alias wsc="windsurf"
+
+alias wayc="$EDITOR $HOME/.config/waybar/config.jsonc"
+alias waysc="$EDITOR $HOME/.config/waybar/style.css"
 
 alias spi="sudo pacman -S"
 alias ng="ngrok http --url=included-maggot-infinitely.ngrok-free.app 80"

@@ -59,7 +59,7 @@ window#waybar {
 
 /* workspace ativo com efeito arco-íris */
 #workspaces button.active button.visible {
-  animation: rainbow 5s linear infinite;
+  animation: rainbow 5s infinite;
   font-weight: bold;
   border-radius: 4px;
 }
