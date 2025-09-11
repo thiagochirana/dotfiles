@@ -32,6 +32,7 @@ alias wayc="$EDITOR $HOME/.config/waybar/config.jsonc"
 alias waysc="$EDITOR $HOME/.config/waybar/style.css"
 
 alias spi="sudo pacman -S"
+alias sys="sudo systemctl"
 alias ng="ngrok http --url=included-maggot-infinitely.ngrok-free.app 80"
 
 alias rubys="bat $ruby_cmd"
