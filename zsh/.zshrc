@@ -17,15 +17,18 @@ load_file() {
 load_file "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
 
 # ============================================================
-# Custom Scripts / Commands
+# Powerlevel10k Config
 # ============================================================
-export bash_files="$HOME/dotfiles/bash/cmd"
-export git_cmd="$bash_files/git"
-export ruby_cmd="$bash_files/ruby"
 
-load_file $git_cmd
-load_file $ruby_cmd
-load_file $HOME/.env
+load_file /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f $HOME/.p10k.zsh ]] || load_file $HOME/.p10k.zsh
+
+# ============================================================
+# Mise / Haskell Config
+# ============================================================
+
+eval "$(mise activate zsh)"
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 
 # ============================================================
 # Oh My Zsh
@@ -35,9 +38,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 
 plugins=(
-  git
   colorize
-  fzf
   heroku
   mise
   postgres
@@ -49,10 +50,20 @@ plugins=(
   eza
   rake
   rust
-  zoxide
 )
 
 load_file $ZSH/oh-my-zsh.sh
+
+# ============================================================
+# Custom Scripts / Commands (carregados após oh-my-zsh)
+# ============================================================
+export bash_files="$HOME/dotfiles/bash/cmd"
+export git_cmd="$bash_files/git"
+export ruby_cmd="$bash_files/ruby"
+
+load_file $git_cmd
+load_file $ruby_cmd
+load_file $HOME/.env
 
 # ============================================================
 # PATH / Environment
@@ -130,17 +141,4 @@ alias gits="bat $git_cmd"
 alias gitc="$EDITOR $git_cmd"
 
 alias hrk="heroku run rails console"
-
-# ============================================================
-# Powerlevel10k Config
-# ============================================================
-
-load_file /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f $HOME/.p10k.zsh ]] || load_file $HOME/.p10k.zsh
-
-# ============================================================
-# Mise / Haskell Config
-# ============================================================
-
-eval "$(mise activate zsh)"
-[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
+alias cls="clear"
