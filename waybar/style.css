@@ -1,73 +1,63 @@
 
-@import "../omarchy/current/theme/waybar.css";
+@define-color bg rgba(255, 0, 0, 0.05); /* fundo transparente avermelhado */
+@define-color fore #f8f8f8;              /* texto claro */
 
-@define-color bg rgba(255, 255, 255, 0.08); /* fundo quase transparente nos módulos */
-@define-color fore white;
-
+/* reset */
 * {
   background-color: transparent;
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: 'SF Mono';
-  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
   color: @fore;
 }
 
-/* barra transparente total */
+/* barra */
 window#waybar {
   background: transparent;
   margin: 0;
   padding: 0;
+  min-height: 18px;
 }
 
-/* módulos lado esquerdo/direito com fundo quase transparente */
+/* módulos agrupados */
 .modules-left,
 .modules-right {
   background-color: @bg;
-  color: @fore;
-  border-radius: 5px;
-  padding: 4px 6px;
-  margin: 4px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: 2px 4px;
+  box-shadow: 0 0 6px rgba(220, 38, 38, 0.5); /* glow vermelho */
 }
 
 /* workspaces */
 #workspaces button {
   all: initial;
-  padding: 0 6px;
+  padding: 1px 6px;
   margin: 0 2px;
-  min-width: 9px;
-  color: @fore;
-  background-color: @bg;
-  border-radius: 3px;
-}
-
-#workspaces button.empty {
-  opacity: 0.6;
-}
-
-/* animação gradiente rainbow */
-@keyframes rainbow {
-  0%   { color: #ff0000; } /* vermelho */
-  16%  { color: #ff7f00; } /* laranja */
-  33%  { color: #ffff00; } /* amarelo */
-  50%  { color: #00ff00; } /* verde */
-  66%  { color: #0000ff; } /* azul */
-  83%  { color: #8b00ff; } /* roxo */
-  100% { color: #ff0000; } /* volta pro vermelho */
-}
-
-/* workspace ativo com efeito arco-íris */
-#workspaces button.active button.visible {
-  animation: rainbow 5s infinite;
-  font-weight: bold;
+  font-size: 11px;
+  color: #f87171; /* vermelho claro */
+  background-color: rgba(248, 113, 113, 0.1);
   border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
+#workspaces button:hover {
+  background-color: rgba(248, 113, 113, 0.3);
+  box-shadow: 0 0 4px #f87171;
+}
+
+#workspaces button.active {
+  color: #ef4444; /* vermelho intenso */
+  font-weight: bold;
+  text-shadow: 0 0 4px #ef4444;
+}
 
 /* módulos individuais */
 #tray,
 #cpu,
+#memory,
 #battery,
 #network,
 #bluetooth,
@@ -77,154 +67,82 @@ window#waybar {
 #custom-expand-icon,
 #clock {
   background-color: @bg;
-  color: @fore;
   border-radius: 4px;
-  padding: 2px 6px;
-  margin: 0 4px;
+  padding: 1px 6px;
+  margin: 0 2px;
+  font-size: 11px;
+  transition: all 0.3s ease;
+}
+
+#clock {
+  font-weight: bold;
+  color: #f87171;
+  text-shadow: 0 0 4px #dc2626;
 }
 
 /* tooltip */
 tooltip {
-  padding: 2px;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: #38bdf8;
+  padding: 2px 4px;
+  background-color: rgba(30, 10, 10, 0.95);
+  color: #f87171;
   border-radius: 4px;
+  box-shadow: 0 0 4px #ef4444;
 }
-
-/* ajustes extras */
-#custom-update {
-  font-size: 10px;
-}
-
-
-#clock {
-  margin-left: 8.75px;
-}
-
-.hidden {
-  opacity: 0;
-}
-
-/* slider de brilho */
-#backlight-slider {
-  min-width: 100px;          /* largura do slider */
-  padding: 2px 6px;
-  margin: 0 4px;
-  border-radius: 4px;
-  background-color: @bg;
-}
-
-/* linha de fundo do slider */
-#backlight-slider trough {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  min-height: 6px;
-}
-
-/* parte preenchida */
-#backlight-slider trough highlight {
-  background-color: @fore;
-  border-radius: 4px;
-}
-
-/* botão do slider */
-#backlight-slider slider {
-  background-color: @fore;
-  border-radius: 50%;
-  min-height: 10px;
-  min-width: 10px;
-}
-
 
 /* ---------- CPU ---------- */
-#cpu.good {
-  color: #38bdf8; /* azul */
-}
-
-#cpu.okay {
-  color: #4DFA64
-}
-
-#cpu.warning {
-  color: #facc15; /* amarelo */
-}
-
+#cpu.good { color: #f87171; }  /* vermelho suave */
+#cpu.okay { color: #fb923c; }  /* laranja */
+#cpu.warning { color: #facc15; } /* amarelo */
 #cpu.critical {
   animation: cpu-pulse 1s infinite;
 }
 
 @keyframes cpu-pulse {
-  0%   { color: #f87171; }  /* vermelho claro */
-  50%  { color: #dc2626; }  /* vermelho escuro */
-  100% { color: #f87171; }
+  0%   { color: #ef4444; text-shadow: 0 0 2px #ef4444; }
+  50%  { color: #991b1b; text-shadow: 0 0 6px #991b1b; }
+  100% { color: #ef4444; text-shadow: 0 0 2px #ef4444; }
 }
 
 /* ---------- MEMÓRIA ---------- */
-#memory.good {
-  color: #38bdf8; /* azul */
-}
-
-#memory.okay {
-  color: #4DFA64
-}
-
-#memory.warning {
-  color: #facc15; /* amarelo */
-}
-
+#memory.good { color: #f87171; }
+#memory.okay { color: #fb923c; }
+#memory.warning { color: #facc15; }
 #memory.critical {
-  animation: mem-pulse 1s infinite;
+  animation: mem-pulse 1.2s infinite;
 }
 
 @keyframes mem-pulse {
-  0%   { color: #fb923c; }  /* laranja */
-  50%  { color: #ea580c; }  /* laranja forte */
-  100% { color: #fb923c; }
+  0%   { color: #fb923c; text-shadow: 0 0 2px #fb923c; }
+  50%  { color: #ea580c; text-shadow: 0 0 6px #ea580c; }
+  100% { color: #fb923c; text-shadow: 0 0 2px #fb923c; }
 }
-
 
 /* ---------- BATTERY ---------- */
-#battery.good {
-  color: #38bdf8; /* azul */
-}
-
-#battery.okay {
-  color: #4dfa64; /* verde */
-}
-
-#battery.warning {
-  color: #facc15; /* amarelo */
-}
-
+#battery.good { color: #f87171; }
+#battery.okay { color: #fb923c; }
+#battery.warning { color: #facc15; }
 #battery.critical {
   animation: batt-critical-pulse 1s infinite;
 }
 
 @keyframes batt-critical-pulse {
-  0%   { color: #fb923c; }  /* laranja */
-  50%  { color: #ea580c; }  /* laranja forte */
-  100% { color: #fb923c; }
+  0%   { color: #ef4444; text-shadow: 0 0 2px #ef4444; }
+  50%  { color: #991b1b; text-shadow: 0 0 6px #991b1b; }
+  100% { color: #ef4444; text-shadow: 0 0 2px #ef4444; }
 }
 
-/* --- CHARGING --- */
 #battery.charging {
-  animation: batt-charging-glow 3s infinite;
+  animation: batt-charging-glow 2s infinite;
 }
 
 @keyframes batt-charging-glow {
-  0%   { color: #014ba0; text-shadow: 0 0 2px #008000; }
-  50%  { color: #4ade80; text-shadow: 0 0 6px #4ade80; }
-  100% { color: #22c55e; text-shadow: 0 0 2px #22c55e; }
+  0%   { color: #fb923c; text-shadow: 0 0 2px #fb923c; }
+  50%  { color: #facc15; text-shadow: 0 0 6px #facc15; }
+  100% { color: #fb923c; text-shadow: 0 0 2px #fb923c; }
 }
 
-/* --- FULL --- */
 #battery.full {
-  animation: batt-full-glow 3s infinite;
-}
-
-@keyframes batt-full-glow {
-  0%   { color: #014ba0; text-shadow: 0 0 2px #008000; }
-  50%  { color: #60a5fa; text-shadow: 0 0 6px #60a5fa; }
-  100% { color: #38bdf8; text-shadow: 0 0 2px #38bdf8; }
+  color: #f87171;
+  text-shadow: 0 0 4px #f87171;
 }
 
