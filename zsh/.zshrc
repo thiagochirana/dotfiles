@@ -50,6 +50,7 @@ plugins=(
   eza
   rake
   rust
+  git
 )
 
 load_file $ZSH/oh-my-zsh.sh
