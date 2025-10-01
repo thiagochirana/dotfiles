@@ -36,7 +36,6 @@ alias gpl="git pull"
 alias gps="git push"
 alias gpsf="git push -f"
 alias gpoff="git push origin --force-with-lease"
-alias gpsup="git push --set-upstream origin $(git_current_branch)"
 
 alias gr="git rebase"
 alias gra="git rebase --abort"

@@ -1,6 +1,4 @@
-
-@define-color bg rgba(255, 0, 0, 0.05); /* fundo transparente avermelhado */
-@define-color fore #f8f8f8;              /* texto claro */
+@import "../omarchy/current/theme/waybar.css";
 
 /* reset */
 * {
@@ -10,7 +8,7 @@
   min-height: 0;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  color: @fore;
+  color: @foreground;
 }
 
 /* barra */
@@ -24,11 +22,11 @@ window#waybar {
 /* módulos agrupados */
 .modules-left,
 .modules-right {
-  background-color: @bg;
+  background-color: @background;
   border-radius: 4px;
   padding: 2px 6px;
   margin: 2px 4px;
-  box-shadow: 0 0 6px rgba(220, 38, 38, 0.5); /* glow vermelho */
+  box-shadow: 0 0 6px alpha(@foreground, 0.3); /* glow adaptado ao tema */
 }
 
 /* workspaces */
@@ -37,21 +35,21 @@ window#waybar {
   padding: 1px 6px;
   margin: 0 2px;
   font-size: 11px;
-  color: #f87171; /* vermelho claro */
-  background-color: rgba(248, 113, 113, 0.1);
+  color: alpha(@foreground, 0.8);
+  background-color: alpha(@foreground, 0.05);
   border-radius: 4px;
   transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-  background-color: rgba(248, 113, 113, 0.3);
-  box-shadow: 0 0 4px #f87171;
+  background-color: alpha(@foreground, 0.15);
+  box-shadow: 0 0 4px @foreground;
 }
 
 #workspaces button.active {
-  color: #ef4444; /* vermelho intenso */
+  color: @foreground;
   font-weight: bold;
-  text-shadow: 0 0 4px #ef4444;
+  text-shadow: 0 0 4px @foreground;
 }
 
 /* módulos individuais */
@@ -66,7 +64,7 @@ window#waybar {
 #custom-update,
 #custom-expand-icon,
 #clock {
-  background-color: @bg;
+  background-color: @background;
   border-radius: 4px;
   padding: 1px 6px;
   margin: 0 2px;
@@ -76,35 +74,35 @@ window#waybar {
 
 #clock {
   font-weight: bold;
-  color: #ffffff;
-  text-shadow: 0 0 4px #dc2626;
+  color: @foreground;
+  text-shadow: 0 0 4px alpha(@foreground, 0.5);
 }
 
 /* tooltip */
 tooltip {
   padding: 2px 4px;
-  background-color: rgba(30, 10, 10, 0.95);
-  color: #f87171;
+  background-color: alpha(@background, 0.95);
+  color: @foreground;
   border-radius: 4px;
-  box-shadow: 0 0 4px #ef4444;
+  box-shadow: 0 0 4px alpha(@foreground, 0.5);
 }
 
 /* ---------- CPU ---------- */
-#cpu.good { color: #f87171; }  /* vermelho suave */
-#cpu.okay { color: #fb923c; }  /* laranja */
-#cpu.warning { color: #facc15; } /* amarelo */
+#cpu.good { color: @foreground; }
+#cpu.okay { color: #fb923c; }
+#cpu.warning { color: #facc15; }
 #cpu.critical {
   animation: cpu-pulse 1s infinite;
 }
 
 @keyframes cpu-pulse {
-  0%   { color: #ef4444; text-shadow: 0 0 2px #ef4444; }
-  50%  { color: #991b1b; text-shadow: 0 0 6px #991b1b; }
-  100% { color: #ef4444; text-shadow: 0 0 2px #ef4444; }
+  0%   { color: @foreground; text-shadow: 0 0 2px @foreground; }
+  50%  { color: alpha(@foreground, 0.5); text-shadow: 0 0 6px alpha(@foreground, 0.5); }
+  100% { color: @foreground; text-shadow: 0 0 2px @foreground; }
 }
 
 /* ---------- MEMÓRIA ---------- */
-#memory.good { color: #f87171; }
+#memory.good { color: @foreground; }
 #memory.okay { color: #fb923c; }
 #memory.warning { color: #facc15; }
 #memory.critical {
@@ -118,7 +116,7 @@ tooltip {
 }
 
 /* ---------- BATTERY ---------- */
-#battery.good { color: #f87171; }
+#battery.good { color: @foreground; }
 #battery.okay { color: #fb923c; }
 #battery.warning { color: #facc15; }
 #battery.critical {
@@ -126,9 +124,9 @@ tooltip {
 }
 
 @keyframes batt-critical-pulse {
-  0%   { color: #ef4444; text-shadow: 0 0 2px #ef4444; }
-  50%  { color: #991b1b; text-shadow: 0 0 6px #991b1b; }
-  100% { color: #ef4444; text-shadow: 0 0 2px #ef4444; }
+  0%   { color: @foreground; text-shadow: 0 0 2px @foreground; }
+  50%  { color: alpha(@foreground, 0.5); text-shadow: 0 0 6px alpha(@foreground, 0.5); }
+  100% { color: @foreground; text-shadow: 0 0 2px @foreground; }
 }
 
 #battery.charging {
@@ -142,7 +140,7 @@ tooltip {
 }
 
 #battery.full {
-  color: #f87171;
-  text-shadow: 0 0 4px #f87171;
+  color: @foreground;
+  text-shadow: 0 0 4px @foreground;
 }
 
