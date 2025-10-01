@@ -1,13 +1,12 @@
 @import "../omarchy/current/theme/waybar.css";
 
-/* reset */
 * {
   background-color: transparent;
   border: none;
   border-radius: 0;
   min-height: 0;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: @foreground;
 }
 
@@ -15,44 +14,47 @@
 window#waybar {
   background: transparent;
   margin: 0;
-  padding: 0;
-  min-height: 18px;
+  padding: 2px 2px;
+  min-height: 10px;
 }
 
-/* módulos agrupados */
+/* módulos agrupados como pílulas */
 .modules-left,
 .modules-right {
   background-color: @background;
-  border-radius: 4px;
-  padding: 2px 6px;
-  margin: 2px 4px;
-  box-shadow: 0 0 6px alpha(@foreground, 0.3); /* glow adaptado ao tema */
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin: 2px 8px;
+  box-shadow: inset 0 0 4px alpha(@foreground, 0.2);
 }
 
-/* workspaces */
+/* workspaces estilo "tabs" */
+#workspaces {
+  margin: 0 4px;
+}
+
 #workspaces button {
-  all: initial;
-  padding: 1px 6px;
-  margin: 0 2px;
+  all: unset;
+  padding: 3px 10px;
+  margin: 0 1px;
   font-size: 11px;
-  color: alpha(@foreground, 0.8);
-  background-color: alpha(@foreground, 0.05);
-  border-radius: 4px;
+  color: alpha(@foreground, 0.7);
+  background-color: transparent;
+  border-radius: 999px;
   transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
   background-color: alpha(@foreground, 0.15);
-  box-shadow: 0 0 4px @foreground;
 }
 
 #workspaces button.active {
+  background-color: alpha(@foreground, 0.25);
   color: @foreground;
   font-weight: bold;
-  text-shadow: 0 0 4px @foreground;
 }
 
-/* módulos individuais */
+/* módulos individuais colados */
 #tray,
 #cpu,
 #memory,
@@ -64,83 +66,40 @@ window#waybar {
 #custom-update,
 #custom-expand-icon,
 #clock {
-  background-color: @background;
-  border-radius: 4px;
-  padding: 1px 6px;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 3px 8px;
   margin: 0 2px;
   font-size: 11px;
-  transition: all 0.3s ease;
 }
 
 #clock {
+  background-color: alpha(@background, 0.5);
+  border-radius: 999px;
+  box-shadow: inset 0 0 4px alpha(@foreground, 0.2);
   font-weight: bold;
   color: @foreground;
-  text-shadow: 0 0 4px alpha(@foreground, 0.5);
 }
 
-/* tooltip */
+/* tooltip minimalista */
 tooltip {
-  padding: 2px 4px;
-  background-color: alpha(@background, 0.95);
+  padding: 4px 6px;
+  background-color: alpha(@background, 0.9);
   color: @foreground;
-  border-radius: 4px;
-  box-shadow: 0 0 4px alpha(@foreground, 0.5);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px alpha(@foreground, 0.3);
 }
 
-/* ---------- CPU ---------- */
-#cpu.good { color: @foreground; }
-#cpu.okay { color: #fb923c; }
-#cpu.warning { color: #facc15; }
-#cpu.critical {
-  animation: cpu-pulse 1s infinite;
-}
-
-@keyframes cpu-pulse {
-  0%   { color: @foreground; text-shadow: 0 0 2px @foreground; }
-  50%  { color: alpha(@foreground, 0.5); text-shadow: 0 0 6px alpha(@foreground, 0.5); }
-  100% { color: @foreground; text-shadow: 0 0 2px @foreground; }
-}
-
-/* ---------- MEMÓRIA ---------- */
-#memory.good { color: @foreground; }
-#memory.okay { color: #fb923c; }
-#memory.warning { color: #facc15; }
-#memory.critical {
-  animation: mem-pulse 1.2s infinite;
-}
-
-@keyframes mem-pulse {
-  0%   { color: #fb923c; text-shadow: 0 0 2px #fb923c; }
-  50%  { color: #ea580c; text-shadow: 0 0 6px #ea580c; }
-  100% { color: #fb923c; text-shadow: 0 0 2px #fb923c; }
-}
-
-/* ---------- BATTERY ---------- */
-#battery.good { color: @foreground; }
-#battery.okay { color: #fb923c; }
-#battery.warning { color: #facc15; }
+/* animações mantém, mas em formato mais discreto */
+#cpu.critical,
+#memory.critical,
 #battery.critical {
-  animation: batt-critical-pulse 1s infinite;
+  text-decoration: underline;
+  animation: blink 1s infinite alternate;
 }
 
-@keyframes batt-critical-pulse {
-  0%   { color: @foreground; text-shadow: 0 0 2px @foreground; }
-  50%  { color: alpha(@foreground, 0.5); text-shadow: 0 0 6px alpha(@foreground, 0.5); }
-  100% { color: @foreground; text-shadow: 0 0 2px @foreground; }
-}
-
-#battery.charging {
-  animation: batt-charging-glow 2s infinite;
-}
-
-@keyframes batt-charging-glow {
-  0%   { color: #fb923c; text-shadow: 0 0 2px #fb923c; }
-  50%  { color: #facc15; text-shadow: 0 0 6px #facc15; }
-  100% { color: #fb923c; text-shadow: 0 0 2px #fb923c; }
-}
-
-#battery.full {
-  color: @foreground;
-  text-shadow: 0 0 4px @foreground;
+@keyframes blink {
+  from { opacity: 1; }
+  to   { opacity: 0.4; }
 }
 

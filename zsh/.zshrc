@@ -104,7 +104,7 @@ alias hyc="$EDITOR $HOME/.config/hypr/hyprland.conf"
 alias hyl="hyprctl reload"
 alias hy="hyprctl"
 
-alias wayc="$EDITOR $HOME/.config/waybar/config"
+alias wayc="$EDITOR $HOME/.config/waybar/config.jsonc"
 alias waysc="$EDITOR $HOME/.config/waybar/style.css"
 alias wayr="pkill -SIGUSR2 waybar"
 alias waystl="$EDITOR /etc/xdg/waybar/style.css"
@@ -122,6 +122,7 @@ alias wsc="windsurf"
 eza_params=('--git' '--icons' '--classify' '--group-directories-first' '--time-style=long-iso' '--group' '--color-scale')
 
 alias ls='eza $eza_params'
+alias lsa="ls -la"
 alias l='eza --git-ignore $eza_params'
 alias ll='eza --all --header --long $eza_params'
 alias llm='eza --all --header --long --sort=modified $eza_params'
