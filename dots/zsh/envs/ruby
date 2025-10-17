@@ -1,0 +1,18 @@
+# Rails cmd
+
+alias rd="./bin/dev"
+alias racp="rails assets:clobber && rm -rf tmp/cache && rm -rf public/assets public/packs public/cache && rails assets:precompile && rm public/assets/.manifest.json"
+alias rap="rails assets:precompile"
+alias rpd="rails assets:precompile && ./bin/dev"
+alias rc="rails console"
+alias rs="rails s"
+alias rr="rails assets:clobber assets:precompile && ./bin/dev"
+alias rp="rails db:prepare db:seed"
+alias rfl="rails db:fixtures:load"
+alias rddb="rails db:drop && rm db/schema.rb"
+alias rrst="rdd && rp && rfl FIXTURES=users && rr"
+alias rdmp="rails db:migrate:primary"
+alias rdrp="rails db:rollback:primary"
+alias bi="bundle install"
+alias bc="bin/console"
+alias restart_rails="rm -rf * && rm -rf .github .kamal .rub* .yarn .dockerignore .gitattributes .node-version .rspec && rm -rf .pnp*"
