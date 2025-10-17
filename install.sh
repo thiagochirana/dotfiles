@@ -10,7 +10,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # ==== CHECAR CONEXÃO ====
 echo "🔍 Verificando conexão com a internet..."
-if ping -q -c 1 -W 2 archlinux.org >/dev/null 2>&1; then
+if ping -q -c 1 -W 2 google.com >/dev/null 2>&1; then
   echo "🌐 Conexão detectada. Pulando configuração de Wi-Fi."
 else
   echo "📶 Nenhuma conexão detectada. Configurando Wi-Fi..."
