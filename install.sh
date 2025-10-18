@@ -34,14 +34,28 @@ fi
 # ==== PACMAN CONFIG ====
 ./installers/pacman.sh
 
+# ==== FONTS ====
+./installers/fonts.sh
+
+# ==== HYPRLAND DEPS ====
+./installers/hyprland.sh
+
 # ==== INSTALL YAY ====
 # ./installers/yay.sh
+
+# ==== DEV DEPS ====
+./installers/dev.sh
 
 # ==== UTILITIES ====
 ./installers/utilities.sh
 
 # ==== WAYBAR ====
 ./installers/waybar.sh
+
+# ==== DOTFILES ====
+./dotfiles.sh
+
+hyprctl reload
 
 echo
 echo "✅ Installation completed successfully!"

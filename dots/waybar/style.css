@@ -1,0 +1,180 @@
+/* ============================================
+   WAYBAR MINIMAL THEME — ELEGANT & FLAT STYLE
+   ============================================ */
+
+/* ---------- PALETA DE CORES ---------- */
+@define-color bg rgba(0, 0, 0, 0.0);
+@define-color fg #dcdfe4;
+@define-color accent #8a2be2;
+@define-color muted #7a7f88;
+@define-color warning #ffaa00;
+@define-color critical #ff4d4d;
+@define-color success #4caf50;
+@define-color border rgba(138, 43, 226, 0.25);
+@define-color hover rgba(138, 43, 226, 0.08);
+
+/* ---------- CONFIG GERAL ---------- */
+* {
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* ---------- BARRA PRINCIPAL ---------- */
+window#waybar {
+  background: @bg;
+  color: @fg;
+  border-bottom: 1px solid @border;
+  padding: 0 8px;
+}
+
+/* ---------- TOOLTIPS ---------- */
+tooltip {
+  background: rgba(20, 20, 25, 0.95);
+  border-radius: 6px;
+  padding: 6px 10px;
+  border: 1px solid @border;
+}
+
+tooltip label {
+  color: @fg;
+}
+
+/* ---------- MÓDULOS BASE ---------- */
+#workspaces,
+#window,
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#bluetooth,
+#custom-launcher,
+#custom-music,
+#custom-power {
+  color: @fg;
+  padding: 0 10px;
+  margin: 0 2px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+#workspaces button:hover,
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover,
+#bluetooth:hover,
+#custom-launcher:hover,
+#custom-music:hover,
+#custom-power:hover {
+  background: @hover;
+}
+
+/* ---------- LAUNCHER ---------- */
+#custom-launcher {
+  color: @accent;
+  font-size: 16px;
+  padding: 0 12px;
+}
+
+/* ---------- WORKSPACES ---------- */
+#workspaces {
+  background: transparent;
+  border: none;
+}
+
+#workspaces button {
+  background: transparent;
+  color: @muted;
+  border-radius: 4px;
+  padding: 0 6px;
+  transition: color 0.2s ease;
+}
+
+#workspaces button.active {
+  color: @accent;
+  font-weight: 600;
+}
+
+#workspaces button.urgent {
+  color: @warning;
+}
+
+/* ---------- WINDOW TITLE ---------- */
+#window {
+  color: @muted;
+  font-style: italic;
+  padding: 0 12px;
+}
+
+#window.empty {
+  color: @muted;
+}
+
+/* ---------- CLOCK ---------- */
+#clock {
+  color: @accent;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- CPU & MEMORY ---------- */
+#cpu { color: @fg; }
+#cpu.warning { color: @warning; }
+#cpu.critical { color: @critical; }
+
+#memory { color: @fg; }
+#memory.warning { color: @warning; }
+#memory.critical { color: @critical; }
+
+/* ---------- NETWORK ---------- */
+#network { color: @fg; }
+#network.disconnected { color: @muted; }
+
+/* ---------- BLUETOOTH ---------- */
+#bluetooth { color: @fg; }
+#bluetooth.off { color: @muted; }
+#bluetooth.connected { color: @accent; }
+
+/* ---------- AUDIO ---------- */
+#pulseaudio { color: @fg; }
+#pulseaudio.muted { color: @muted; }
+
+/* ---------- BACKLIGHT ---------- */
+#backlight { color: @warning; }
+
+/* ---------- BATTERY ---------- */
+#battery { color: @success; }
+#battery.charging { color: @accent; }
+#battery.warning { color: @warning; }
+#battery.critical { color: @critical; }
+#battery.full,
+#battery.plugged { color: @success; }
+
+/* ---------- MUSIC ---------- */
+#custom-music {
+  color: @accent;
+  font-style: italic;
+}
+
+/* ---------- POWER BUTTON ---------- */
+#custom-power {
+  color: @critical;
+  font-size: 14px;
+  padding: 0 12px;
+}
+
+/* ---------- SPACING ---------- */
+#workspaces, #clock {
+  margin: 0 6px;
+}

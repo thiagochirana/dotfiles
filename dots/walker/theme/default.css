@@ -1,0 +1,58 @@
+@define-color fg rgba(255, 255, 255, 0.85);
+@define-color bg rgba(20, 20, 30, 0.85);
+@define-color accent rgba(150, 100, 255, 0.3);
+
+#window {
+  color: @fg;
+}
+
+#box {
+  border-radius: 16px;
+  background: @bg;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+#search {
+  background: transparent;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+#prompt {
+  margin-right: 10px;
+  opacity: 0.4;
+}
+
+#input {
+  background: none;
+  color: @fg;
+  font-size: 18px;
+  border: none;
+}
+
+child {
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+child:hover,
+child:selected {
+  background: @accent;
+  color: #fff;
+}
+
+#icon {
+  margin-right: 8px;
+}
+
+#label {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#sub {
+  opacity: 0.5;
+  font-size: 0.85em;
+}

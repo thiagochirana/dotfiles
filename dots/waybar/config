@@ -1,0 +1,176 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 20,
+  "margin-top": 8,
+  "margin-left": 12,
+  "margin-right": 12,
+  "spacing": 8,
+  
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "custom/music",
+    "cpu",
+    "memory",
+    "bluetooth",
+    "network",
+    "pulseaudio", 
+    "backlight",
+    "battery",
+    "custom/power"
+  ],
+
+  "custom/launcher": {
+    "format": "󰣇",
+    "tooltip": false,
+    "on-click": "walker app"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "壹",
+      "2": "貳",
+      "3": "參",
+      "4": "肆",
+      "5": "伍",
+      "6": "陸",
+      "7": "柒",
+      "8": "捌",
+      "9": "玖",
+      "active": "󰮯",
+      "default": "󰊠"
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 50,
+    "separate-outputs": true,
+    "rewrite": {
+      "": "  Desktop"
+    }
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-on": "󰂯",
+    "format-off": "󰂲", 
+    "format-connected": "󰂱 {num_connections}",
+    "format-connected-battery": "󰂱 {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "overskride"
+  },
+
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 2,
+    "tooltip": true,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+    "max-length": 35
+  },
+
+  "clock": {
+    "format": "{:%H:%M  %a %d %b}",
+    "format-alt": "{:%H:%M:%S}",
+    "interval": 1,
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "network": {
+    "format-wifi": "󰤨 {signalStrength}%",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤭",
+    "interval": 5,
+    "tooltip-format": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "alacritty -e impala"
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "󰻠 {usage}%",
+    "format-alt": "󰻠 {icon0}{icon1}{icon2}{icon3}",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "on-click": "alacritty -e htop",
+    "tooltip": true
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "󰍛 {percentage}%",
+    "format-alt": "󰍛 {used:0.1f}G",
+    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
+    "on-click": "alacritty -e htop"
+  },
+  
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "tooltip": false,
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+  
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    "tooltip-format": "{desc}\n{volume}%"
+  },
+
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} Full",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "{timeTo}\n{capacity}% - {power}W"
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "wlogout"
+  }
+}

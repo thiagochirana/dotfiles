@@ -1,0 +1,5 @@
+#!/bin/bash
+
+selected=$(walker)
+
+[ -n "$selected" ] && exec run-app "$selected"

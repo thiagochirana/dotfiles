@@ -7,16 +7,8 @@ sudo pacman -S --needed --noconfirm \
   cmake scdoc wayland-protocols glib2-devel cava
 
 if ! command -v waybar >/dev/null 2>&1; then
-  echo "📦 Installing Waybar from source..."
-  tmpdir=$(mktemp -d)
-  cd "$tmpdir"
-  git clone https://github.com/Alexays/Waybar
-  cd Waybar
-  meson setup build
-  ninja -C build
-  sudo ninja -C build install
-  cd ~
-  rm -rf "$tmpdir"
+  # CHECKFUNC=0 yay -S --noconfirm waybar-git
+  sudo pacman -S --needed --noconfirm waybar
 else
   echo "🟢 Waybar already installed ($(waybar -v)), skipping compilation..."
 fi

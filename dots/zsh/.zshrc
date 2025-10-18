@@ -12,6 +12,16 @@ load_file() {
 
 export PATH="$HOME/dotfiles/bin:$PATH"
 
+DOTFILES_DIR="$HOME/dotfiles"
+CONFIG_DIR="$HOME/.config"
+BIN_DIR="$HOME/.local/bin"
+
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
+
+
 # ============================================================
 # Powerlevel10k Instant Prompt (keep close to top)
 # ============================================================
@@ -37,7 +47,6 @@ eval "$(mise activate zsh)"
 # ============================================================
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
 
 plugins=(
   colorize

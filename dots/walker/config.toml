@@ -1,0 +1,57 @@
+close_when_open = true
+theme = "default"
+theme_base = []
+theme_location = ["~/.config/walker/themes/"]
+hotreload_theme = true
+force_keyboard_focus = true
+timeout = 60
+
+# Apenas busca de aplicativos
+[builtins.applications]
+launch_prefix = ""
+placeholder = " Search..."
+prioritize_new = false
+context_aware = false
+show_sub_when_single = false
+history = false
+icon = ""
+hidden = false
+
+[builtins.applications.actions]
+enabled = false
+hide_category = true
+
+# Desativa tudo o resto
+[builtins.windows]
+hidden = true
+[builtins.calc]
+hidden = true
+[builtins.runner]
+hidden = true
+[builtins.clipboard]
+hidden = true
+[builtins.finder]
+hidden = true
+[builtins.websearch]
+hidden = true
+[builtins.translation]
+hidden = true
+[builtins.symbols]
+hidden = true
+[builtins.ssh]
+hidden = true
+[builtins.bookmarks]
+hidden = true
+[builtins.custom_commands]
+hidden = true
+[builtins.hyprland_keybinds]
+hidden = true
+[builtins.emojis]
+hidden = true
+
+[search]
+placeholder = " Search..."
+
+[list]
+max_entries = 100
+cycle = true

@@ -1,0 +1,25 @@
+[ui.anchors]
+top = true
+bottom = true
+left = true
+right = true
+
+[ui.window]
+h_align = "center"
+v_align = "center"
+
+[ui.window.box]
+width = 500
+v_align = "center"
+h_align = "center"
+
+[ui.window.box.bar.entry]
+h_align = "fill"
+h_expand = true
+
+[ui.window.box.scroll.list]
+max_height = 400
+min_width = 480
+
+[ui.window.box.scroll.list.item.icon]
+pixel_size = 28
