@@ -1,14 +1,12 @@
 #!/bin/bash
 set -euo pipefail
+DOTFILES_DIR="$HOME/dotfiles"
+CONFIG_DIR="$HOME/.config"
+BIN_DIR="$HOME/.local/bin"
 
-# ==== CONFIGURATION INITIAL ====
-
-# Grants sudo permissions
 sudo -v
-# Maintains sudo permissions while the script runs
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# ==== CHECK CONNECTION ====
 echo "🔍 Verificando conexão com a internet..."
 if ping -q -c 1 -W 2 google.com >/dev/null 2>&1; then
   echo "🌐 Conexão detectada. Pulando configuração de Wi-Fi."
@@ -31,28 +29,13 @@ else
   iwctl --passphrase "$PASS" station wlan0 connect "$WIFI"
 fi
 
-# ==== PACMAN CONFIG ====
 ./installers/pacman.sh
-
-# ==== FONTS ====
 ./installers/fonts.sh
-
-# ==== HYPRLAND DEPS ====
 ./installers/hyprland.sh
-
-# ==== INSTALL YAY ====
-# ./installers/yay.sh
-
-# ==== DEV DEPS ====
+./installers/yay.sh
 ./installers/dev.sh
-
-# ==== UTILITIES ====
 ./installers/utilities.sh
-
-# ==== WAYBAR ====
 ./installers/waybar.sh
-
-# ==== DOTFILES ====
 ./dotfiles.sh
 
 hyprctl reload
