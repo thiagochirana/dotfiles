@@ -33,22 +33,22 @@ fi
 
 # ==== PACMAN CONFIG ====
 sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm base-devel libyaml git curl postgresql postgis eza bat zsh uwsm fftw alsa-lib iniparser pkgconf gtklock makoctl
-sudo pacman -S --needed --noconfirm swayosd swayosd-libinput-backend hyprpicker
+sudo pacman -S --needed --noconfirm base-devel libyaml git curl postgresql postgis eza bat zsh uwsm fftw alsa-lib iniparser pkgconf gtklock
+sudo pacman -S --needed --noconfirm swayosd hyprpicker
 
 # ==== INSTALAR YAY ====
-tmpdir=$(mktemp -d)
-cd "$tmpdir"232123
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
-cd ~
-rm -rf "$tmpdir"
+#tmpdir=$(mktemp -d)
+#cd "$tmpdir"
+# git clone https://aur.archlinux.org/yay.git
+#cd yay
+#makepkg -si --noconfirm
+#cd ~
+#rm -rf "$tmpdir"
 
 # ==== UTILITÁRIOS ====
 sudo pacman -S --needed --noconfirm alacritty mpv ghostty
 sudo pacman -S --needed --noconfirm impala btop fastfetch vim neovim cava
-sudo pacman -S --needed --noconfirm chromium steam
+sudo pacman -S --needed --noconfirm chromium
 yay -S --noconfirm google-chrome windsurf walker-bin heroku-cli
 
 # ==== WAYBAR ====
