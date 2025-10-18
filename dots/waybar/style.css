@@ -178,3 +178,55 @@ tooltip label {
 #workspaces, #clock {
   margin: 0 6px;
 }
+
+/* ---------- TRAY EXPANDER ---------- */
+#custom-tray-toggle {
+  color: @accent;
+  font-size: 12px;
+  padding: 0 8px;
+  margin: 0 2px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+#custom-tray-toggle:hover {
+  background: @hover;
+}
+
+#tray {
+  padding: 0 4px;
+  margin: 0 2px;
+}
+
+#tray .tray-group-item {
+  margin: 0 2px;
+}
+
+#tray > .active { opacity: 1; }
+#tray > .passive { opacity: 0.5; }
+#tray > .needs-attention {
+  background-color: @warning;
+  border-radius: 4px;
+}
+
+/* ---------- BACKLIGHT SLIDER ---------- */
+
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#backlight-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: @fg;
+}
+#backlight-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: @accent;
+}
