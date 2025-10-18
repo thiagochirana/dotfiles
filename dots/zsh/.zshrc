@@ -16,24 +16,14 @@ DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
 BIN_DIR="$HOME/.local/bin"
 
-export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
-export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k" # set by `omz`
-
-
-# ============================================================
-# Powerlevel10k Instant Prompt (keep close to top)
-# ============================================================
-
-load_file "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
 
 # ============================================================
 # Powerlevel10k Config
 # ============================================================
 
-load_file /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f $HOME/.p10k.zsh ]] || load_file $HOME/.p10k.zsh
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # ============================================================
 # Mise / Haskell Config
@@ -41,12 +31,6 @@ load_file /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 eval "$(mise activate zsh)"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
-
-# ============================================================
-# Oh My Zsh
-# ============================================================
-
-export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
   colorize
@@ -63,8 +47,6 @@ plugins=(
   rust
   git
 )
-
-load_file $ZSH/oh-my-zsh.sh
 
 # ============================================================
 # Custom Scripts / Commands (carregados após oh-my-zsh)
