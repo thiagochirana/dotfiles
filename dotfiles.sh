@@ -9,6 +9,7 @@ BIN_DIR="$HOME/.local/bin"
 
 mkdir -p "$CONFIG_DIR" "$BIN_DIR"
 mkdir -p "$HOME/Screenshots"
+mkdir -p "$HOME/.$USER/backgrounds"
 
 # --- Zsh ---
 echo "🔗 Criando symlink para Zsh..."
@@ -28,18 +29,7 @@ rm -rf "$CONFIG_DIR/hypr"
 ln -s "$DOTFILES_DIR/dots/hypr" "$CONFIG_DIR/hypr"
 
 # --- Binários ---
-echo "⚙️  Configurando binários..."
-BIN_DIR="$HOME/.local/bin"
-
-mkdir -p "$BIN_DIR"
-
-chmod +x "$DOTFILES_DIR/bin/"*
-for file in "$DOTFILES_DIR/bin/"*; do
-  target="$BIN_DIR/$(basename "$file")"
-  echo "🔗 $target"
-  ln -s "$file" "$target"
-done
-
+"./bins.sh"
 
 # --- Waybar ---
 echo "🔗 Criando symlink para Waybar..."

@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+user_name="${USER:-$(id -un)}"
+
+usage() {
+  cat <<USAGE
+Usage: ${0##*/} [--init]
+
+Options:
+  --init    Apply the current wallpaper without cycling to the next image.
+
+Environment variables:
+  WALLPAPER_DIR   Directory containing wallpaper images. Defaults to
+                  "$HOME/.${user_name}/backgrounds" when available, or falls back to
+                  "$HOME/Pictures/Wallpapers" if the first option does not exist.
+  WALLPAPER_STATE_FILE  Location to store the current wallpaper index.
+                        Defaults to "${XDG_CACHE_HOME:-$HOME/.cache}/wallpapers/index".
+USAGE
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --init)
+      mode="init"
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+mode=${mode:-next}
+
+candidate_dirs=()
+if [[ -n "${WALLPAPER_DIR:-}" ]]; then
+  candidate_dirs+=("$WALLPAPER_DIR")
+else
+  candidate_dirs+=("$HOME/.${user_name}/backgrounds" "$HOME/Pictures/Wallpapers")
+fi
+
+wallpaper_dir=""
+for dir in "${candidate_dirs[@]}"; do
+  if [[ -d "$dir" ]]; then
+    wallpaper_dir="$dir"
+    break
+  fi
+done
+
+if [[ -z "$wallpaper_dir" ]]; then
+  echo "No wallpaper directory found. Searched: ${candidate_dirs[*]}" >&2
+  exit 1
+fi
+
+mapfile -t wallpapers < <(find "$wallpaper_dir" -maxdepth 1 -type f \
+  \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.bmp' -o -iname '*.gif' \) \
+  | sort)
+
+if [[ ${#wallpapers[@]} -eq 0 ]]; then
+  echo "No wallpapers found in $wallpaper_dir" >&2
+  exit 1
+fi
+
+state_file_default="${XDG_CACHE_HOME:-$HOME/.cache}/wallpapers/index"
+state_file="${WALLPAPER_STATE_FILE:-$state_file_default}"
+mkdir -p "$(dirname "$state_file")"
+
+current_index=0
+if [[ -f "$state_file" ]]; then
+  if ! read -r current_index < "$state_file"; then
+    current_index=0
+  fi
+fi
+
+if [[ "$mode" == "next" ]]; then
+  current_index=$(( (current_index + 1) % ${#wallpapers[@]} ))
+fi
+
+echo "$current_index" > "$state_file"
+
+selected_wallpaper="${wallpapers[$current_index]}"
+
+# Replace any running swaybg instance with the new wallpaper
+if command -v swaybg >/dev/null 2>&1; then
+  pkill -x swaybg 2>/dev/null || true
+  setsid swaybg -i "$selected_wallpaper" -m fill >/dev/null 2>&1 &
+elif command -v hyprpaper >/dev/null 2>&1; then
+  # hyprpaper expects configuration to be provided. We fall back to a direct request.
+  hyprctl hyprpaper unload all >/dev/null 2>&1 || true
+  hyprctl hyprpaper preload "$selected_wallpaper"
+  hyprctl hyprpaper wallpaper "", "$selected_wallpaper"
+else
+  echo "No supported wallpaper setter found (swaybg or hyprpaper)." >&2
+  exit 1
+fi
+
+if command -v notify-send >/dev/null 2>&1; then
+  notify-send "Wallpaper updated" "$(basename "$selected_wallpaper")"
+fi
