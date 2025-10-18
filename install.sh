@@ -33,11 +33,12 @@ fi
 
 # ==== PACMAN CONFIG ====
 sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm base-devel libyaml git curl postgresql postgis eza bat zsh uwsm fftw alsa-lib iniparser pulseaudio pkgconf gtklock
+sudo pacman -S --needed --noconfirm base-devel libyaml git curl postgresql postgis eza bat zsh uwsm fftw alsa-lib iniparser pkgconf gtklock makoctl
+sudo pacman -S --needed --noconfirm swayosd swayosd-libinput-backend hyprpicker
 
 # ==== INSTALAR YAY ====
 tmpdir=$(mktemp -d)
-cd "$tmpdir"
+cd "$tmpdir"232123
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
@@ -57,14 +58,21 @@ sudo pacman -S --needed --noconfirm \
   libdbusmenu-gtk3 libmpdclient sndio libevdev libxkbcommon upower meson \
   cmake scdoc wayland-protocols glib2-devel
 
-cd /tmp
-git clone https://github.com/Alexays/Waybar
-cd Waybar
-meson setup build
-ninja -C build
-sudo ninja -C build install
-cd ~
-rm -rf /tmp/Waybar
+
+if ! command -v waybar >/dev/null 2>&1; then
+  echo "📦 Instalando Waybar a partir do código-fonte..."
+  tmpdir=$(mktemp -d)
+  cd "$tmpdir"
+  git clone https://github.com/Alexays/Waybar
+  cd Waybar
+  meson setup build
+  ninja -C build
+  sudo ninja -C build install
+  cd ~
+  rm -rf "$tmpdir"
+else
+  echo "🟢 Waybar já está instalado ($(waybar -v)), pulando compilação..."
+fi
 
 echo
 echo "✅ Instalação concluída com sucesso!"
