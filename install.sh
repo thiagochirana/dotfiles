@@ -1,14 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
-# ==== CONFIGURAÇÃO INICIAL ====
+# ==== CONFIGURATION INITIAL ====
 
-# Garante que sudo não peça senha várias vezes
+# Grants sudo permissions
 sudo -v
-# Mantém a sessão sudo viva enquanto o script roda
+# Maintains sudo permissions while the script runs
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# ==== CHECAR CONEXÃO ====
+# ==== CHECK CONNECTION ====
 echo "🔍 Verificando conexão com a internet..."
 if ping -q -c 1 -W 2 google.com >/dev/null 2>&1; then
   echo "🌐 Conexão detectada. Pulando configuração de Wi-Fi."
@@ -32,47 +32,16 @@ else
 fi
 
 # ==== PACMAN CONFIG ====
-sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm base-devel libyaml git curl postgresql postgis eza bat zsh uwsm fftw alsa-lib iniparser pkgconf gtklock
-sudo pacman -S --needed --noconfirm swayosd hyprpicker
+./installers/pacman.sh
 
-# ==== INSTALAR YAY ====
-#tmpdir=$(mktemp -d)
-#cd "$tmpdir"
-# git clone https://aur.archlinux.org/yay.git
-#cd yay
-#makepkg -si --noconfirm
-#cd ~
-#rm -rf "$tmpdir"
+# ==== INSTALL YAY ====
+# ./installers/yay.sh
 
-# ==== UTILITÁRIOS ====
-sudo pacman -S --needed --noconfirm alacritty mpv ghostty
-sudo pacman -S --needed --noconfirm impala btop fastfetch vim neovim cava
-sudo pacman -S --needed --noconfirm chromium
-yay -S --noconfirm google-chrome windsurf walker-bin heroku-cli
+# ==== UTILITIES ====
+./installers/utilities.sh
 
 # ==== WAYBAR ====
-sudo pacman -S --needed --noconfirm \
-  gtkmm3 jsoncpp libsigc++ fmt wayland chrono-date spdlog gtk3 \
-  gobject-introspection libgirepository libpulse libnl libappindicator-gtk3 \
-  libdbusmenu-gtk3 libmpdclient sndio libevdev libxkbcommon upower meson \
-  cmake scdoc wayland-protocols glib2-devel
-
-
-if ! command -v waybar >/dev/null 2>&1; then
-  echo "📦 Instalando Waybar a partir do código-fonte..."
-  tmpdir=$(mktemp -d)
-  cd "$tmpdir"
-  git clone https://github.com/Alexays/Waybar
-  cd Waybar
-  meson setup build
-  ninja -C build
-  sudo ninja -C build install
-  cd ~
-  rm -rf "$tmpdir"
-else
-  echo "🟢 Waybar já está instalado ($(waybar -v)), pulando compilação..."
-fi
+./installers/waybar.sh
 
 echo
-echo "✅ Instalação concluída com sucesso!"
+echo "✅ Installation completed successfully!"

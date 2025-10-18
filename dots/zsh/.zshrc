@@ -10,6 +10,8 @@ load_file() {
   fi
 }
 
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 # ============================================================
 # Powerlevel10k Instant Prompt (keep close to top)
 # ============================================================
