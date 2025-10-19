@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 echo "⚙️  Configurando dotfiles..."
 
 set -euo pipefail
@@ -12,11 +10,12 @@ mkdir -p "$HOME/Screenshots"
 mkdir -p "$HOME/.$USER/backgrounds"
 
 # --- Zsh ---
+chsh -s $(which zsh)
 echo "🔗 Criando symlink para Zsh..."
 rm -f "$HOME/.zshrc"
 ln -s "$DOTFILES_DIR/dots/zsh/.zshrc" "$HOME/.zshrc"
 
-source "$HOME/.zshrc"
+# source "$HOME/.zshrc"
 
 # --- powerlevel10k ---
 echo "🔗 Criando symlink para powerlevel10k..."
