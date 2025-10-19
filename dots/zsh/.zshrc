@@ -16,14 +16,12 @@ DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
 BIN_DIR="$HOME/.local/bin"
 
-export ZSH_CUSTOM="$ZSH/custom"
-
 # ============================================================
 # Powerlevel10k Config
 # ============================================================
 
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source "/usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme"
 
 # ============================================================
 # Mise / Haskell Config
