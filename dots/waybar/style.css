@@ -3,15 +3,15 @@
    ============================================ */
 
 /* ---------- PALETA DE CORES ---------- */
-@define-color bg rgba(0, 0, 0, 0.0);
-@define-color fg #dcdfe4;
-@define-color accent #8a2be2;
-@define-color muted #7a7f88;
-@define-color warning #ffaa00;
-@define-color critical #ff4d4d;
-@define-color success #4caf50;
-@define-color border rgba(138, 43, 226, 0.25);
-@define-color hover rgba(138, 43, 226, 0.08);
+@define-color bg rgba(0, 0, 0, 0.6);
+@define-color fg #e5e5e5;
+@define-color accent #b5a1ff;
+@define-color muted #a0a0a0;
+@define-color warning #e3b341;
+@define-color critical #e06666;
+@define-color success #7bd389;
+@define-color border rgba(255, 255, 255, 0.08);
+@define-color hover rgba(255, 255, 255, 0.06);
 
 /* ---------- CONFIG GERAL ---------- */
 * {
@@ -29,8 +29,11 @@
 window#waybar {
   background: @bg;
   color: @fg;
-  border-bottom: 1px solid @border;
-  padding: 0 8px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* ---------- TOOLTIPS ---------- */

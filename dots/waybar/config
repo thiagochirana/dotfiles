@@ -1,11 +1,6 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 20,
-  "margin-top": 8,
-  "margin-left": 12,
-  "margin-right": 12,
-  "spacing": 8,
   
   "modules-left": [
     "custom/launcher",
@@ -20,6 +15,7 @@
   "modules-right": [
     "group/tray-expander",
     "custom/music",
+    "cava",
     "pulseaudio",
     "network",
     "battery",
@@ -117,7 +113,7 @@
   "cpu": {
     "interval": 2,
     "format": "󰻠 {usage}%",
-    "on-click": "alacritty -e htop",
+    "on-click": "alacritty -e btop",
     "tooltip": true
   },
 
@@ -125,7 +121,7 @@
     "interval": 5,
     "format": "󰍛 {percentage}%",
     "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
-    "on-click": "alacritty -e htop"
+    "on-click": "alacritty -e btop"
   },
 
   "network": {
@@ -170,5 +166,28 @@
     "format": "⏻",
     "tooltip": false,
     "on-click": "wlogout"
+  },
+
+  "cava": {
+    "framerate": 30,
+    "autosens": 1,
+    "sensitivity": 100,
+    "bars": 8,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+    "hide_on_silence": false,
+    "method": "pulse",
+    "source": "auto",
+    "stereo": true,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.77,
+    "input_delay": 2,
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+    "actions": {
+      "on-click-right": "pavucontrol"
+    }
   }
 }

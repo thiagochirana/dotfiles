@@ -29,10 +29,10 @@ else
   iwctl --passphrase "$PASS" station wlan0 connect "$WIFI"
 fi
 
+./installers/yay.sh
 ./installers/pacman.sh
 ./installers/fonts.sh
 ./installers/hyprland.sh
-./installers/yay.sh
 ./installers/dev.sh
 ./installers/utilities.sh
 ./installers/waybar.sh
