@@ -1,0 +1,62 @@
+[window]
+padding = { x = 4, y = 2 }
+dynamic_padding = false
+decorations = "none"
+opacity = 0.95
+startup_mode = "Windowed"
+blur = true
+
+[scrolling]
+history = 5000
+multiplier = 3
+
+[font]
+normal = { family = "SF Mono", style = "Regular" }
+bold = { family = "SF Mono", style = "Bold" }
+italic = { family = "SF Mono", style = "Italic" }
+bold_italic = { family = "SF Mono", style = "Bold Italic" }
+size = 11.0
+offset = { x = 0, y = 0 }
+glyph_offset = { x = 0, y = -1 }
+
+[colors.primary]
+background = "#0e0e11"
+foreground = "#dcdfe4"
+
+[colors.cursor]
+text = "#0e0e11"
+cursor = "#a78bfa"  # roxo suave
+
+[colors.selection]
+text = "CellForeground"
+background = "#3b3b4a"
+
+[colors.normal]
+black = "#1c1c1e"
+red = "#ff5c57"
+green = "#5af78e"
+yellow = "#f3f99d"
+blue = "#57c7ff"
+magenta = "#ff6ac1"
+cyan = "#9aedfe"
+white = "#f1f1f0"
+
+[colors.bright]
+black = "#686868"
+red = "#ff5c57"
+green = "#5af78e"
+yellow = "#f3f99d"
+blue = "#57c7ff"
+magenta = "#ff6ac1"
+cyan = "#9aedfe"
+white = "#ffffff"
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+
+[keyboard]
+bindings = [
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "N", mods = "Control|Shift", action = "SpawnNewInstance" }
+]

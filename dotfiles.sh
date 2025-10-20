@@ -50,6 +50,11 @@ echo "🔗 create symlink to Mako..."
 rm -rf "$CONFIG_DIR/mako"
 ln -s "$DOTFILES_DIR/dots/mako" "$CONFIG_DIR/mako"
 
+# --- Alacritty ---
+echo "🔗 create symlink to Alacritty..."
+rm -rf "$CONFIG_DIR/alacritty"
+ln -s "$DOTFILES_DIR/dots/alacritty" "$CONFIG_DIR/alacritty"
+
 hyprctl reload
 
 echo

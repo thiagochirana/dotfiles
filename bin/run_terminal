@@ -1,17 +1,25 @@
 #!/bin/bash
+set -euo pipefail
 
-TERMINAL=${TERMINAL:-kitty}
+TERMINAL=${TERMINAL:-alacritty}
 
 get_dir() {
-  # tenta pegar o processo ativo do Hyprland
-  focused_pid=$(hyprctl activewindow -j | jq -r '.pid' 2>/dev/null)
-  [ -z "$focused_pid" ] && echo "$HOME" && return
+  focused_pid=$(hyprctl activewindow -j 2>/dev/null | jq -r '.pid // empty')
 
-  # tenta ler o diretório do processo ativo
-  cwd=$(readlink -f "/proc/$focused_pid/cwd" 2>/dev/null)
-  [ -d "$cwd" ] && echo "$cwd" && return
+  if [ -n "$focused_pid" ] && [ -r "/proc/$focused_pid/cwd" ]; then
+    readlink -f "/proc/$focused_pid/cwd"
+    return
+  fi
 
-  # fallback final
+  active_workspace=$(hyprctl activeworkspace -j | jq -r '.id // empty')
+  if [ -n "$active_workspace" ]; then
+    window_pid=$(hyprctl clients -j | jq -r --arg id "$active_workspace" '.[] | select(.workspace.id == ($id|tonumber)) | .pid' | head -n1)
+    if [ -n "$window_pid" ] && [ -r "/proc/$window_pid/cwd" ]; then
+      readlink -f "/proc/$window_pid/cwd"
+      return
+    fi
+  fi
+
   echo "$HOME"
 }
 
