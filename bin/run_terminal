@@ -1,0 +1,19 @@
+#!/bin/bash
+
+TERMINAL=${TERMINAL:-kitty}
+
+get_dir() {
+  # tenta pegar o processo ativo do Hyprland
+  focused_pid=$(hyprctl activewindow -j | jq -r '.pid' 2>/dev/null)
+  [ -z "$focused_pid" ] && echo "$HOME" && return
+
+  # tenta ler o diretório do processo ativo
+  cwd=$(readlink -f "/proc/$focused_pid/cwd" 2>/dev/null)
+  [ -d "$cwd" ] && echo "$cwd" && return
+
+  # fallback final
+  echo "$HOME"
+}
+
+DIR=$(get_dir)
+exec "$TERMINAL" --working-directory="$DIR"
