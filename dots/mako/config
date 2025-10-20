@@ -1,0 +1,35 @@
+
+# ----- Aparência -----
+font=SF Mono 10
+background-color=#1e1e2eff
+text-color=#ffffffff
+border-color=#7c3aedff
+border-size=2
+border-radius=8
+padding=10
+margin=10
+width=350
+
+# ----- Tempo e posição -----
+anchor=top-right
+max-visible=5
+default-timeout=5000
+ignore-timeout=0
+
+# ----- Comportamento -----
+output=*
+icons=1
+max-icon-size=64
+layer=overlay
+
+# ----- Cores de urgência -----
+[urgency=low]
+border-color=#4caf50ff
+
+[urgency=normal]
+border-color=#7c3aedff
+
+[urgency=high]
+border-color=#ff4d4dff
+default-timeout=10000
+
