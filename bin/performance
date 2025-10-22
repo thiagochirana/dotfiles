@@ -1,0 +1,59 @@
+#!/bin/bash
+set -euo pipefail
+
+MODE=${1:-on}
+
+if [[ "$MODE" == "on" ]]; then
+  notify-send "🎮 Ativando Modo Performance"
+  echo "🎮 Ativando modo de performance para jogos..."
+
+  sudo pacman -S --needed --noconfirm linux-zen linux-zen-headers mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon gamemode lib32-gamemode mangohud lib32-mangohud cpupower
+
+  sudo tee /etc/sysctl.d/99-gaming-performance.conf > /dev/null <<'EOF'
+vm.swappiness=10
+vm.dirty_ratio=10
+vm.dirty_background_ratio=5
+vm.vfs_cache_pressure=50
+EOF
+  sudo sysctl --system
+
+  echo madvise | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+
+  sudo systemctl enable --now cpupower.service
+  sudo tee /etc/default/cpupower > /dev/null <<'EOF'
+governor='performance'
+EOF
+  sudo systemctl restart cpupower
+
+  sudo tee /etc/gamemode.ini > /dev/null <<'EOF'
+[general]
+renice=10
+softrealtime=auto
+desiredgov=performance
+[custom]
+start=notify-send "🎮 GameMode ativado"
+end=notify-send "💤 GameMode desativado"
+EOF
+
+  notify-send "✅ Modo Performance Ativado"
+  echo "✅ Modo de performance ativado. Reinicie o sistema para aplicar tudo."
+
+else
+  notify-send "💤 Desativando Modo Performance"
+  echo "💤 Desativando modo de performance, restaurando configurações padrão..."
+
+  sudo rm -f /etc/sysctl.d/99-gaming-performance.conf
+  sudo sysctl --system
+
+  echo always | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+
+  sudo tee /etc/default/cpupower > /dev/null <<'EOF'
+governor='schedutil'
+EOF
+  sudo systemctl restart cpupower
+
+  sudo rm -f /etc/gamemode.ini
+
+  notify-send "✅ Sistema restaurado ao modo padrão"
+  echo "✅ Sistema restaurado ao modo padrão. Reinicie para aplicar completamente."
+fi

@@ -1,0 +1,14 @@
+#!/bin/bash
+set -euo pipefail
+
+STATE_FILE="$HOME/.cache/gaming_mode_state"
+
+if [[ -f "$STATE_FILE" && "$(cat "$STATE_FILE")" == "on" ]]; then
+  bash "$HOME/.local/bin/performance" off
+  echo "off" > "$STATE_FILE"
+  notify-send "💤 Modo Performance desativado"
+else
+  bash "$HOME/.local/bin/performance" on
+  echo "on" > "$STATE_FILE"
+  notify-send "🚀 Modo Performance ativado"
+fi
