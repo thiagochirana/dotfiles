@@ -1,0 +1,29 @@
+[[commands]]
+name = "Lock screen"
+icon = "󰌾"
+cmd = "gtklock"
+
+[[commands]]
+name = "Restart Hyprland"
+icon = "󰜉"
+cmd = "hyprctl dispatch exit"
+
+[[commands]]
+name = "System monitor"
+icon = "󰍛"
+cmd = "kitty -e btop"
+
+[[commands]]
+name = "Open Config Folder"
+icon = "󰒓"
+cmd = "thunar ~/.config"
+
+[[commands]]
+name = "Update System"
+icon = "󰏗"
+cmd = "kitty -e yay -Syu --noconfirm"
+
+[[commands]]
+name = "Cronômetro"
+icon = "󱎫"
+cmd = "kitty -e python3 $HOME/.config/walker/scripts/stopwatch.py"

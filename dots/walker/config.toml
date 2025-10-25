@@ -1,57 +1,52 @@
 close_when_open = true
-theme = "default"
-theme_base = []
-theme_location = ["~/.config/walker/themes/"]
+theme = "purple"
+theme_location = ["$HOME/.config/walker/themes/"]
 hotreload_theme = true
 force_keyboard_focus = true
-timeout = 60
-
-# Apenas busca de aplicativos
-[builtins.applications]
-launch_prefix = ""
-placeholder = " Search..."
-prioritize_new = false
-context_aware = false
-show_sub_when_single = false
-history = false
-icon = ""
-hidden = false
-
-[builtins.applications.actions]
-enabled = false
-hide_category = true
-
-# Desativa tudo o resto
-[builtins.windows]
-hidden = true
-[builtins.calc]
-hidden = true
-[builtins.runner]
-hidden = true
-[builtins.clipboard]
-hidden = true
-[builtins.finder]
-hidden = true
-[builtins.websearch]
-hidden = true
-[builtins.translation]
-hidden = true
-[builtins.symbols]
-hidden = true
-[builtins.ssh]
-hidden = true
-[builtins.bookmarks]
-hidden = true
-[builtins.custom_commands]
-hidden = true
-[builtins.hyprland_keybinds]
-hidden = true
-[builtins.emojis]
-hidden = true
+timeout = 90
 
 [search]
-placeholder = " Search..."
+placeholder = "  Run anything..."
 
 [list]
 max_entries = 100
 cycle = true
+
+# --------------------------
+# BUILTINS
+# --------------------------
+
+# Aplicativos (normal)
+[builtins.applications]
+placeholder = "  Apps..."
+prioritize_new = false
+context_aware = false
+show_sub_when_single = false
+history = true
+icon = "󰀻"
+
+# Calculadora embutida
+[builtins.calc]
+hidden = false
+placeholder = "󰃬  Calc..."
+auto_copy = true
+
+# Comandos customizados (como o Raycast)
+[builtins.custom_commands]
+hidden = false
+file = "$HOME/.config/walker/commands.toml"
+
+# Busca web
+[builtins.websearch]
+hidden = false
+engine = "https://www.google.com/search?q="
+placeholder = "🌐  Search web..."
+
+# Emojis
+[builtins.emojis]
+hidden = false
+
+# Clipboard (histórico)
+[builtins.clipboard]
+hidden = false
+max_entries = 20
