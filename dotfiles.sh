@@ -55,6 +55,12 @@ echo "🔗 create symlink to Alacritty..."
 rm -rf "$CONFIG_DIR/alacritty"
 ln -s "$DOTFILES_DIR/dots/alacritty" "$CONFIG_DIR/alacritty"
 
+# --- Wlogout ---
+echo "🔗 create symlink to Wlogout..."
+rm -rf "$CONFIG_DIR/wlogout"
+ln -s "$DOTFILES_DIR/dots/wlogout" "$CONFIG_DIR/wlogout"
+rm -rf /etc/wlogout/
+
 hyprctl reload
 
 echo
