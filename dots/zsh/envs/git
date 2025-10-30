@@ -34,6 +34,7 @@ alias gf="git fetch --all --prune"
 
 alias gpl="git pull"
 alias gps="git push"
+alias gpsup="git push --set-upstream origin $(git_current_branch)"
 alias gpsf="git push -f"
 alias gpoff="git push origin --force-with-lease"
 
