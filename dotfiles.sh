@@ -27,6 +27,11 @@ echo "🔗 create symlink to Hyprland..."
 rm -rf "$CONFIG_DIR/hypr"
 ln -s "$DOTFILES_DIR/dots/hypr" "$CONFIG_DIR/hypr"
 
+# --- Neovim ---
+echo "🔗 create symlink to Neovim..."
+rm -rf "$CONFIG_DIR/nvim"
+ln -s "$DOTFILES_DIR/dots/nvim" "$CONFIG_DIR/nvim"
+
 # --- Binários ---
 "./bins.sh"
 
