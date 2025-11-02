@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Toggle Hyprland monitor layouts between HDMI-only and dual-display
+set -euo pipefail
+
+HDMI_PORT="HDMI-A-1"
+DVI_PORT="DVI-D-1"
+
+if ! command -v hyprctl >/dev/null 2>&1; then
+  echo "hyprctl not found in PATH" >&2
+  exit 1
+fi
+
+case "${1:-}" in
+  hdmi)
+    hyprctl keyword monitor "$DVI_PORT,disable"
+    hyprctl keyword monitor "$HDMI_PORT,1920x1080@74.97,0x0,1"
+    notify-send "HDMI-only display enabled"
+    ;;
+  dual)
+    hyprctl keyword monitor "$DVI_PORT,1920x1080@60,-1920x0,1"
+    hyprctl keyword monitor "$HDMI_PORT,1920x1080@74.97,0x0,1"
+    notify-send "Dual display enabled"
+    ;;
+  *)
+    echo "Usage: $(basename "$0") {hdmi|dual}" >&2
+    exit 1
+    ;;
+esac
