@@ -11,15 +11,33 @@ if ! command -v hyprctl >/dev/null 2>&1; then
   exit 1
 fi
 
+assign_workspaces_hdmi_only() {
+  hyprctl keyword workspace "1, monitor:$HDMI_PORT, default:true, persistent:true"
+  for ws in 2 3 4 5; do
+    hyprctl keyword workspace "$ws, monitor:$HDMI_PORT, persistent:true"
+  done
+}
+
+assign_workspaces_dual() {
+  hyprctl keyword workspace "1, monitor:$HDMI_PORT, default:true, persistent:true"
+  hyprctl keyword workspace "2, monitor:$HDMI_PORT, persistent:true"
+  hyprctl keyword workspace "3, monitor:$HDMI_PORT, persistent:true"
+  for ws in 4 5; do
+    hyprctl keyword workspace "$ws, monitor:$DVI_PORT, persistent:true"
+  done
+}
+
 case "${1:-}" in
   hdmi)
     hyprctl keyword monitor "$DVI_PORT,disable"
     hyprctl keyword monitor "$HDMI_PORT,1920x1080@74.97,0x0,1"
+    assign_workspaces_hdmi_only
     notify-send "HDMI-only display enabled"
     ;;
   dual)
     hyprctl keyword monitor "$DVI_PORT,1920x1080@60,-1920x0,1"
     hyprctl keyword monitor "$HDMI_PORT,1920x1080@74.97,0x0,1"
+    assign_workspaces_dual
     notify-send "Dual display enabled"
     ;;
   *)

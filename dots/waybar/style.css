@@ -3,15 +3,16 @@
    ============================================ */
 
 /* ---------- PALETA DE CORES ---------- */
-@define-color bg rgba(0, 0, 0, 0.6);
-@define-color fg #e5e5e5;
-@define-color accent #b5a1ff;
-@define-color muted #a0a0a0;
+@define-color bg rgba(0, 0, 0, 0.82);
+@define-color fg #f7f7f7;
+@define-color accent #7A716A;
+@define-color muted #706F6B;
 @define-color warning #e3b341;
 @define-color critical #e06666;
 @define-color success #7bd389;
-@define-color border rgba(255, 255, 255, 0.08);
-@define-color hover rgba(255, 255, 255, 0.06);
+@define-color border rgba(56, 60, 63, 0.6);
+@define-color hover rgba(112, 111, 107, 0.22);
+@define-color surface #383C3F;
 
 /* ---------- CONFIG GERAL ---------- */
 * {
@@ -99,18 +100,22 @@ tooltip label {
 #workspaces button {
   background: transparent;
   color: @muted;
-  border-radius: 4px;
-  padding: 0 6px;
-  transition: color 0.2s ease;
+  border-radius: 6px;
+  padding: 0 8px;
+  margin: 0 2px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 #workspaces button.active {
-  color: @accent;
+  background: @accent;
+  color: @fg;
   font-weight: 600;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
 }
 
 #workspaces button.urgent {
-  color: @warning;
+  background: @warning;
+  color: @bg;
 }
 
 /* ---------- WINDOW TITLE ---------- */
