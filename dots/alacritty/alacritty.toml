@@ -1,3 +1,4 @@
+
 [window]
 padding = { x = 4, y = 2 }
 dynamic_padding = false
@@ -19,38 +20,6 @@ size = 11.0
 offset = { x = 0, y = 0 }
 glyph_offset = { x = 0, y = -1 }
 
-[colors.primary]
-background = "#282B3D"
-foreground = "#dcdfe4"
-
-[colors.cursor]
-text = "#282B3D"
-cursor = "#a78bfa"  # roxo suave
-
-[colors.selection]
-text = "CellForeground"
-background = "#3b3b4a"
-
-[colors.normal]
-black = "#282B3D"
-red = "#ff5c57"
-green = "#5af78e"
-yellow = "#f3f99d"
-blue = "#57c7ff"
-magenta = "#ff6ac1"
-cyan = "#9aedfe"
-white = "#f1f1f0"
-
-[colors.bright]
-black = "#282B3D"
-red = "#ff5c57"
-green = "#5af78e"
-yellow = "#f3f99d"
-blue = "#57c7ff"
-magenta = "#ff6ac1"
-cyan = "#9aedfe"
-white = "#ffffff"
-
 [cursor]
 style = { shape = "Beam", blinking = "On" }
 
@@ -63,3 +32,6 @@ bindings = [
   { key = "Right", mods = "Alt", chars = "\u001bf" }
 
 ]
+
+[general]
+import = ["~/.config/theme/alacritty.toml"]

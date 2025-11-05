@@ -9,6 +9,13 @@ mkdir -p "$CONFIG_DIR" "$BIN_DIR"
 mkdir -p "$HOME/Screenshots"
 mkdir -p "$HOME/.$USER/backgrounds"
 
+# --- Theme hub ---
+echo "🔗 create symlink to shared theme..."
+rm -rf "$CONFIG_DIR/theme"
+ln -s "$DOTFILES_DIR/dots/theme" "$CONFIG_DIR/theme"
+ln -sf "$DOTFILES_DIR/dots/theme/reload.sh" "$BIN_DIR/theme-reload"
+"$DOTFILES_DIR/dots/theme/build_theme.sh"
+
 # --- Zsh ---
 chsh -s $(which zsh)
 echo "🔗 create symlink to Zsh..."

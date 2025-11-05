@@ -2,17 +2,7 @@
    WAYBAR MINIMAL THEME — ELEGANT & FLAT STYLE
    ============================================ */
 
-/* ---------- PALETA DE CORES ---------- */
-@define-color bg rgba(0, 0, 0, 0.82);
-@define-color fg #f7f7f7;
-@define-color accent #7A716A;
-@define-color muted #706F6B;
-@define-color warning #e3b341;
-@define-color critical #e06666;
-@define-color success #7bd389;
-@define-color border rgba(56, 60, 63, 0.6);
-@define-color hover rgba(112, 111, 107, 0.22);
-@define-color surface #383C3F;
+@import url("../theme/colors.css");
 
 /* ---------- CONFIG GERAL ---------- */
 * {
@@ -115,7 +105,7 @@ tooltip label {
 
 #workspaces button.urgent {
   background: @warning;
-  color: @bg;
+  color: @bg_solid;
 }
 
 /* ---------- WINDOW TITLE ---------- */

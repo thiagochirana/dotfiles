@@ -1,0 +1,33 @@
+[colors]
+background = "#282B3D"
+background_translucent = "rgba(0, 0, 0, 0.82)"
+surface = "#383C3F"
+foreground = "#f7f7f7"
+muted = "#706F6B"
+accent = "#7A716A"
+success = "#7bd389"
+warning = "#e3b341"
+critical = "#e06666"
+cursor = "#a78bfa"
+selection = "#3b3b4a"
+border = "rgba(13, 148, 252, 0.6)"
+hover = "rgba(112, 111, 107, 0.22)"
+tooltip = "rgba(20, 20, 25, 0.95)"
+shadow = "#141516ee"
+
+[term]
+cursor_text = "#282B3D"
+foreground = "#dcdfe4"
+
+[typography]
+monospace_stack = "SF Mono, Fira Code, monospace"
+code_size_small = 10
+code_size_regular = 11
+
+[metrics]
+border_radius = 6
+module_padding_x = 10
+workspace_padding_x = 8
+opacity_window = 0.95
+opacity_inactive = 0.8
+window_radius = 8
