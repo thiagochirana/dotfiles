@@ -11,6 +11,7 @@ load_file() {
 }
 
 export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
