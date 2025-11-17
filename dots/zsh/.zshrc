@@ -92,6 +92,9 @@ alias hyc="$EDITOR $HOME/.config/hypr/hyprland.conf"
 alias hyl="hyprctl reload"
 alias hy="hyprctl"
 
+alias i3l="i3 reload"
+alias i3c="nvim $HOME/.config/i3/config"
+
 alias wayc="$EDITOR $HOME/.config/waybar/config.jsonc"
 alias waysc="$EDITOR $HOME/.config/waybar/style.css"
 alias wayr="pkill -SIGUSR2 waybar"

@@ -1,0 +1,142 @@
+# i3 configuration derived from the Hyprland setup
+set $mod Mod4
+set $terminal uwsm app -- kitty
+set $browser google-chrome-stable --new-window
+set $filemanager uwsm app -- nautilus
+set $bin $HOME/dotfiles/bin
+set $launcher rofi -show drun
+set $screenshot $bin/screenshot
+set $monitorctl $bin/monitor_profile
+set $wallpaper_cycle $bin/wallpaper_cycle
+set $idle_util $bin/idle_util
+set $close_windows $bin/close_windows
+set $gamemode $bin/gamemode
+
+font pango:JetBrainsMono Nerd Font 7
+floating_modifier $mod
+focus_follows_mouse yes
+focus_on_window_activation smart
+
+# Basic window manager controls
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym Control+Mod1+Delete exec --no-startup-id $close_windows
+
+# Application launchers and utilities
+bindsym $mod+Return exec --no-startup-id bash -c "$HOME/.local/bin/run_terminal"
+bindsym $mod+Delete exec --no-startup-id wlogout -s
+bindsym $mod+Shift+Delete exec --no-startup-id gtklock
+bindsym $mod+f exec --no-startup-id $filemanager
+bindsym $mod+b exec --no-startup-id $browser
+bindsym $mod+t exec --no-startup-id $terminal -e btop
+bindsym $mod+y exec --no-startup-id $terminal -e impala
+bindsym $mod+g exec --no-startup-id $gamemode
+bindsym $mod+Shift+a exec --no-startup-id $browser https://chatgpt.com
+
+# Menuing, aesthetics, wallpapers
+bindsym $mod+space exec --no-startup-id $launcher
+bindsym $mod+Shift+space exec --no-startup-id pkill -SIGUSR1 waybar
+bindsym $mod+Control+space exec --no-startup-id $wallpaper_cycle
+
+# Notifications
+bindsym $mod+comma exec --no-startup-id makoctl dismiss
+bindsym $mod+Shift+comma exec --no-startup-id makoctl dismiss --all
+bindsym $mod+Control+comma exec --no-startup-id bash -lc 'makoctl mode -t do-not-disturb && if makoctl mode | grep -q do-not-disturb; then notify-send "Silenced notifications"; else notify-send "Enabled notifications"; fi'
+
+# Idle toggle
+bindsym $mod+Control+i exec --no-startup-id $idle_util
+
+# Screenshots and color picker
+bindsym Mod1+Print exec --no-startup-id $screenshot
+bindsym Shift+Print exec --no-startup-id $screenshot window
+bindsym Control+Print exec --no-startup-id $screenshot output
+bindsym $mod+Print exec --no-startup-id bash -lc 'pkill hyprpicker || hyprpicker -a'
+
+# Display profiles
+bindsym $mod+F9 exec --no-startup-id $monitorctl hdmi
+bindsym $mod+F10 exec --no-startup-id $monitorctl dual
+
+# Window management
+bindsym $mod+w kill
+bindsym $mod+e layout toggle split
+bindsym $mod+s layout tabbed
+bindsym $mod+j split toggle
+bindsym $mod+p layout toggle split stacking tabbed
+bindsym $mod+v floating toggle
+bindsym Shift+F11 fullscreen toggle
+
+# Focus movement
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+# Alt-Tab style cycling (approximation of Hyprland cyclenext)
+bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
+
+# Workspaces 1-10
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move focused window to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Workspace cycling and scrolling
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
+bindsym $mod+button5 workspace next_on_output
+bindsym $mod+button4 workspace prev_on_output
+
+# Move focused container (swap)
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+
+# Resizing similar to Hyprland +/- bindings
+bindsym $mod+minus resize grow width 20 px
+bindsym $mod+equal resize shrink width 20 px
+bindsym $mod+Shift+minus resize shrink height 20 px
+bindsym $mod+Shift+equal resize grow height 20 px
+
+# Media and brightness keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id swayosd-client --output-volume raise
+bindsym XF86AudioLowerVolume exec --no-startup-id swayosd-client --output-volume lower
+bindsym XF86AudioMute exec --no-startup-id swayosd-client --output-volume mute-toggle
+bindsym XF86AudioMicMute exec --no-startup-id swayosd-client --input-volume mute-toggle
+bindsym XF86MonBrightnessUp exec --no-startup-id swayosd-client --brightness raise
+bindsym XF86MonBrightnessDown exec --no-startup-id swayosd-client --brightness lower
+
+# Precise adjustments with Alt
+bindsym Mod1+XF86AudioRaiseVolume exec --no-startup-id swayosd-client --output-volume +1
+bindsym Mod1+XF86AudioLowerVolume exec --no-startup-id swayosd-client --output-volume -1
+bindsym Mod1+XF86MonBrightnessUp exec --no-startup-id swayosd-client --brightness +1
+bindsym Mod1+XF86MonBrightnessDown exec --no-startup-id swayosd-client --brightness -1
+
+# Media playback controls (playerctl)
+bindsym XF86AudioNext exec --no-startup-id swayosd-client --playerctl next
+bindsym XF86AudioPause exec --no-startup-id swayosd-client --playerctl play-pause
+bindsym XF86AudioPlay exec --no-startup-id swayosd-client --playerctl play-pause
+bindsym XF86AudioPrev exec --no-startup-id swayosd-client --playerctl previous
+
+bar {
+    status_command i3status
+}

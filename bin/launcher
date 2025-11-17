@@ -1,5 +1,37 @@
 #!/bin/bash
+set -euo pipefail
 
-selected=$(walker)
+detect_session() {
+  local desktop="${XDG_CURRENT_DESKTOP:-}"
+  desktop="${desktop,,}"
 
-[ -n "$selected" ] && exec run-app "$selected"
+  if [[ "$desktop" == *i3* ]] || pgrep -x i3 >/dev/null 2>&1; then
+    echo "i3"
+  elif [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]] || [[ "$desktop" == *hyprland* ]] || pgrep -x Hyprland >/dev/null 2>&1; then
+    echo "hyprland"
+  else
+    echo "unknown"
+  fi
+}
+
+run_hyprland_launcher() {
+  local selected
+  selected=$(walker)
+  [[ -n "$selected" ]] && exec run-app "$selected"
+}
+
+run_i3_launcher() {
+  if ! command -v rofi >/dev/null 2>&1; then
+    notify-send "Rofi não encontrado" "Instale o rofi para usar o launcher no i3." -u critical -t 3000
+    exit 1
+  fi
+
+  exec rofi -show drun
+}
+
+session="$(detect_session)"
+if [[ "$session" == "i3" ]]; then
+  run_i3_launcher
+else
+  run_hyprland_launcher
+fi

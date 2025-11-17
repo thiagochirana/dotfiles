@@ -1,18 +1,67 @@
 #!/bin/bash
+set -euo pipefail
 
 # [[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
 # OUTPUT_DIR="${OMARCHY_SCREENSHOT_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}}"
 OUTPUT_DIR="$HOME/Screenshots"
+MODE="${1:-region}"
 
 if [[ ! -d "$OUTPUT_DIR" ]]; then
   notify-send "Screenshot directory does not exist: $OUTPUT_DIR" -u critical -t 3000
   exit 1
 fi
 
-pkill slurp || hyprshot -m ${1:-region} --raw |
-  satty --filename - \
-    --output-filename "$OUTPUT_DIR/screenshot-$(date +'%Y-%m-%d_%H-%M-%S').png" \
-    --early-exit \
-    --actions-on-enter save-to-clipboard \
-    --save-after-copy \
-    --copy-command 'wl-copy'
+timestamp() {
+  date +'%Y-%m-%d_%H-%M-%S'
+}
+
+detect_session() {
+  local desktop="${XDG_CURRENT_DESKTOP:-}"
+  desktop="${desktop,,}"
+
+  if [[ "$desktop" == *i3* ]] || pgrep -x i3 >/dev/null 2>&1; then
+    echo "i3"
+  elif [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]] || [[ "$desktop" == *hyprland* ]] || pgrep -x Hyprland >/dev/null 2>&1; then
+    echo "hyprland"
+  else
+    echo "unknown"
+  fi
+}
+
+take_hyprland_shot() {
+  pkill slurp || true
+  hyprshot -m "$MODE" --raw |
+    satty --filename - \
+      --output-filename "$OUTPUT_DIR/screenshot-$(timestamp).png" \
+      --early-exit \
+      --actions-on-enter save-to-clipboard \
+      --save-after-copy \
+      --copy-command 'wl-copy'
+}
+
+take_i3_shot() {
+  if ! command -v flameshot >/dev/null 2>&1; then
+    notify-send "Flameshot não encontrado" "Instale o flameshot para usar este comando no i3wm." -u critical -t 3000
+    exit 1
+  fi
+
+  local output_file="$OUTPUT_DIR/screenshot-$(timestamp).png"
+  case "$MODE" in
+    output)
+      flameshot screen --clipboard --path "$output_file"
+      ;;
+    window)
+      flameshot gui --clipboard --path "$output_file" --accept-on-select --region window
+      ;;
+    *)
+      flameshot gui --clipboard --path "$output_file" --accept-on-select
+      ;;
+  esac
+}
+
+session="$(detect_session)"
+if [[ "$session" == "i3" ]]; then
+  take_i3_shot
+else
+  take_hyprland_shot
+fi
