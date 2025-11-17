@@ -17,6 +17,8 @@ floating_modifier $mod
 focus_follows_mouse yes
 focus_on_window_activation smart
 
+exec --no-startup-id xrandr --output HDMI-A-0 --mode 1920x1080 --rate 74.97 --primary --output DVI-D-0 --mode 1920x1080 --rate 60 --left-of HDMI-A-0
+
 # Basic window manager controls
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart

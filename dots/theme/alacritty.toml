@@ -1,31 +1,28 @@
+# Colors (Dracula)
+
+# Default colors
 [colors.primary]
-background = "#252525"
-foreground = "#e5e9f2"
+background = '#282a36'
+foreground = '#f8f8f2'
 
-[colors.cursor]
-text = "#ebebeb"
-cursor = "#10c019"
-
-[colors.selection]
-text = "CellForeground"
-background = "#2b2d38"
-
+# Normal colors
 [colors.normal]
-black = "#1F212C"
-red = "#da5959"
-green = "#66c17b"
-yellow = "#d0a237"
-blue = "#9782eb"
-magenta = "#6b625b"
-cyan = "#4ef040"
-white = "#e9e9e9"
+black   = '#000000'
+red     = '#ff5555'
+green   = '#50fa7b'
+yellow  = '#f1fa8c'
+blue    = '#bd93f9'
+magenta = '#ff79c6'
+cyan    = '#8be9fd'
+white   = '#bbbbbb'
 
+# Bright colors
 [colors.bright]
-black = "#616996"
-red = "#e90000"
-green = "#7fdc95"
-yellow = "#e9ba4a"
-blue = "#b4a0ff"
-magenta = "#85796f"
-cyan = "#3c3d4b"
-white = "#ffffff"
+black   = '#555555'
+red     = '#ff5555'
+green   = '#50fa7b'
+yellow  = '#f1fa8c'
+blue    = '#caa9fa'
+magenta = '#ff79c6'
+cyan    = '#8be9fd'
+white   = '#ffffff'
