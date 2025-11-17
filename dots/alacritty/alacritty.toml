@@ -2,7 +2,8 @@
 [window]
 padding = { x = 4, y = 2 }
 dynamic_padding = false
-decorations = "none"
+dynamic_title = true
+decorations = "Full"
 opacity = 0.95
 startup_mode = "Windowed"
 blur = true

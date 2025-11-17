@@ -139,6 +139,37 @@ bindsym XF86AudioPause exec --no-startup-id swayosd-client --playerctl play-paus
 bindsym XF86AudioPlay exec --no-startup-id swayosd-client --playerctl play-pause
 bindsym XF86AudioPrev exec --no-startup-id swayosd-client --playerctl previous
 
+
+# Theming (Gruvbox Dark Hard inspired)
+set $bg_hard #1d2021
+set $bg_soft #282828
+set $bg_highlight #3c3836
+set $fg #ebdbb2
+set $fg_dim #a89984
+set $accent #d65d0e
+set $blue #458588
+set $green #98971a
+set $red #cc241d
+
+client.focused          $accent        $accent        $bg_hard $accent        $accent
+client.focused_inactive $bg_highlight  $bg_highlight  $fg_dim  $bg_highlight  $bg_highlight
+client.unfocused        $bg_soft       $bg_soft       $fg_dim  $bg_soft       $bg_soft
+client.urgent           $red           $red           $bg_hard $red           $red
+client.placeholder      $bg_soft       $bg_soft       $fg      $bg_soft       $bg_soft
+client.background       $bg_hard
+
+
 bar {
     status_command i3status
+    colors {
+        background $bg_hard
+        statusline $fg
+        separator $fg_dim
+
+        focused_workspace  $accent       $bg_highlight $fg
+        active_workspace   $bg_highlight $bg_highlight $fg
+        inactive_workspace $bg_soft      $bg_soft      $fg_dim
+        urgent_workspace   $red          $red          $bg_hard
+        binding_mode       $blue         $blue         $fg
+    }
 }
