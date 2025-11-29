@@ -1,28 +1,28 @@
-# Colors (Dracula)
+# Colors (Ayu Dark)
 
 # Default colors
 [colors.primary]
-background = '#282a36'
-foreground = '#f8f8f2'
+background = '#0A0E14'
+foreground = '#B3B1AD'
 
 # Normal colors
 [colors.normal]
-black   = '#000000'
-red     = '#ff5555'
-green   = '#50fa7b'
-yellow  = '#f1fa8c'
-blue    = '#bd93f9'
-magenta = '#ff79c6'
-cyan    = '#8be9fd'
-white   = '#bbbbbb'
+black   = '#01060E'
+red     = '#EA6C73'
+green   = '#91B362'
+yellow  = '#F9AF4F'
+blue    = '#53BDFA'
+magenta = '#FAE994'
+cyan    = '#90E1C6'
+white   = '#C7C7C7'
 
 # Bright colors
 [colors.bright]
-black   = '#555555'
-red     = '#ff5555'
-green   = '#50fa7b'
-yellow  = '#f1fa8c'
-blue    = '#caa9fa'
-magenta = '#ff79c6'
-cyan    = '#8be9fd'
-white   = '#ffffff'
+black   = '#686868'
+red     = '#F07178'
+green   = '#C2D94C'
+yellow  = '#FFB454'
+blue    = '#59C2FF'
+magenta = '#FFEE99'
+cyan    = '#95E6CB'
+white   = '#FFFFFF'
