@@ -63,6 +63,7 @@ load_file $HOME/.env
 # ============================================================
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin" # release nvim
+export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 
 # ============================================================

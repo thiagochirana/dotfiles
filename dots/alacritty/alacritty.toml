@@ -1,6 +1,5 @@
 
 [window]
-padding = { x = 4, y = 2 }
 dynamic_padding = false
 dynamic_title = true
 decorations = "Full"
