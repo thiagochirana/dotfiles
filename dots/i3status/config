@@ -1,0 +1,59 @@
+# i3status configuration (Gruvbox-inspired). Adjust interface names if they differ.
+
+general {
+        colors = true
+        interval = 5
+        separator = " | "
+        color_good = "#98971a"
+        color_degraded = "#d79921"
+        color_bad = "#cc241d"
+}
+
+order += "disk /"
+order += "wireless wlan0"
+order += "ethernet enp3s0"
+order += "battery 0"
+order += "volume master"
+order += "memory"
+order += "cpu_usage"
+order += "tztime local"
+
+wireless wlan0 {
+        format_up = "wifi: %essid %quality%% %ip"
+        format_down = "wifi: disconnected"
+}
+
+ethernet enp3s0 {
+        format_up = "eth: %ip"
+        format_down = "eth: disconnected"
+}
+
+battery 0 {
+        format = "bat: %percentage%% %remaining"
+        format_down = "bat: n/a"
+        last_full_capacity = true
+}
+
+volume master {
+        format = "vol: %volume"
+        format_muted = "vol: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+memory {
+        format = "mem: %used/%total"
+}
+
+cpu_usage {
+        format = "cpu: %usage"
+}
+
+disk "/" {
+        format = "disk: %avail"
+}
+
+tztime local {
+        format = "time: %Y-%m-%d %H:%M"
+}
