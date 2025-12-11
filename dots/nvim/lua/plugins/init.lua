@@ -17,4 +17,5 @@ return {
   require("plugins.dressing"),
   require("plugins.mini_icons"),
   require("plugins.indent_blankline"),
+  require("plugins.opencode"),
 }
