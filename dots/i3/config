@@ -139,17 +139,16 @@ bindsym XF86AudioPause exec --no-startup-id swayosd-client --playerctl play-paus
 bindsym XF86AudioPlay exec --no-startup-id swayosd-client --playerctl play-pause
 bindsym XF86AudioPrev exec --no-startup-id swayosd-client --playerctl previous
 
-
-# Theming (Gruvbox Dark Hard inspired)
-set $bg_hard #1d2021
-set $bg_soft #282828
-set $bg_highlight #3c3836
-set $fg #ebdbb2
-set $fg_dim #a89984
-set $accent #d65d0e
-set $blue #458588
-set $green #98971a
-set $red #cc241d
+# Theming (Monokai-inspired dark, orange accent)
+set $bg_hard #0f100d
+set $bg_soft #1b1c18
+set $bg_highlight #2a2b24
+set $fg #f8f8f2
+set $fg_dim #75715e
+set $accent #fd971f
+set $blue #fd971f
+set $green #a6e22e
+set $red #f92672
 
 client.focused          $accent        $accent        $bg_hard $accent        $accent
 client.focused_inactive $bg_highlight  $bg_highlight  $fg_dim  $bg_highlight  $bg_highlight

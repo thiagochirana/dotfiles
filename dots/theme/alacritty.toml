@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 # Colors (Ayu Dark)
+=======
+# Colors (Monokai Dark)
+>>>>>>> 31f3bf0 (feat: add new theme)
 
-# Default colors
+# Default colors (darker base)
 [colors.primary]
+<<<<<<< HEAD
 background = '#0A0E14'
 foreground = '#B3B1AD'
 
@@ -26,3 +31,29 @@ blue    = '#59C2FF'
 magenta = '#FFEE99'
 cyan    = '#95E6CB'
 white   = '#FFFFFF'
+=======
+background = '#0f100d'
+foreground = '#f8f8f2'
+
+# Normal colors
+[colors.normal]
+black   = '#1b1c18'
+red     = '#f92672'
+green   = '#a6e22e'
+yellow  = '#e6db74'
+blue    = '#fd971f'
+magenta = '#ae81ff'
+cyan    = '#a1efe4'
+white   = '#f8f8f2'
+
+# Bright colors
+[colors.bright]
+black   = '#3c3d35'
+red     = '#f92672'
+green   = '#a6e22e'
+yellow  = '#e6db74'
+blue    = '#ffb454'
+magenta = '#ae81ff'
+cyan    = '#a1efe4'
+white   = '#f8f8f0'
+>>>>>>> 31f3bf0 (feat: add new theme)
