@@ -78,7 +78,7 @@ local function apply(variant)
 end
 
 function M.setup()
-  M.current = vim.g.theme_variant or "light"
+  M.current = vim.g.theme_variant or "dark"
   apply(M.current)
 
   vim.api.nvim_create_user_command("ToggleTheme", function()

@@ -12,7 +12,7 @@ Options:
 
 Environment variables:
   WALLPAPER_DIR   Directory containing wallpaper images. Defaults to
-                  "$HOME/.${user_name}/backgrounds" when available, or falls back to
+                  "$HOME/backgrounds" when available, or falls back to
                   "$HOME/Pictures/Wallpapers" if the first option does not exist.
   WALLPAPER_STATE_FILE  Location to store the current wallpaper index.
                         Defaults to "${XDG_CACHE_HOME:-$HOME/.cache}/wallpapers/index".
@@ -43,7 +43,7 @@ candidate_dirs=()
 if [[ -n "${WALLPAPER_DIR:-}" ]]; then
   candidate_dirs+=("$WALLPAPER_DIR")
 else
-  candidate_dirs+=("$HOME/.${user_name}/backgrounds" "$HOME/Pictures/Wallpapers")
+  candidate_dirs+=("$HOME/backgrounds" "$HOME/Pictures/Wallpapers")
 fi
 
 wallpaper_dir=""

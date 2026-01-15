@@ -30,6 +30,20 @@ local mappings = {
   { mode = "n", lhs = "<leader>tt", rhs = ":ToggleTheme", desc = "Toggle Theme" },
   {
     mode = "n",
+    lhs = "<leader>ya",
+    rhs = function()
+      local start_line = vim.fn.line("w0")
+      local end_line = vim.fn.line("w$")
+      local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+      local text = table.concat(lines, "\n") .. "\n"
+      vim.fn.setreg('"', text)
+      vim.fn.setreg("+", text)
+      vim.notify("Copied visible window text", vim.log.levels.INFO)
+    end,
+    desc = "Copy visible window text",
+  },
+  {
+    mode = "n",
     lhs = "<leader>e",
     rhs = function()
       if not package.loaded["nvim-tree"] then
