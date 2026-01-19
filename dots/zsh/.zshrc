@@ -135,6 +135,7 @@ alias gitc="$EDITOR $git_cmd"
 
 alias hrk="heroku run rails console"
 alias cls="clear"
+alias CLS="cls"
 
 alias tc="touch"
 

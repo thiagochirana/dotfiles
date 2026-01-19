@@ -16,7 +16,7 @@ detect_session() {
 
 run_hyprland_launcher() {
   local selected
-  selected=$(walker)
+  selected=$(waycast)
   [[ -n "$selected" ]] && exec run-app "$selected"
 }
 
