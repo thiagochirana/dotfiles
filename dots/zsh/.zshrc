@@ -141,3 +141,11 @@ alias tc="touch"
 
 # opencode
 export PATH=/home/chira/.opencode/bin:$PATH
+
+# ============================================================
+# Aliases - Npm / Bun
+# ============================================================
+alias nrd="npm run dev"
+alias ni="npm install"
+alias brd="bun run dev"
+

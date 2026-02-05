@@ -35,3 +35,7 @@ bindings = [
 
 [general]
 import = ["~/.config/theme/alacritty.toml"]
+
+[colors.primary]
+background = "#0b0b0b"
+foreground = "#f2f2f2"

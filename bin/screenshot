@@ -15,6 +15,35 @@ timestamp() {
   date +'%Y-%m-%d_%H-%M-%S'
 }
 
+is_black_pixel() {
+  local color="$1"
+  [[ "$color" == *"0,0,0"* ]] || [[ "$color" == "#000000"* ]]
+}
+
+trim_black_border() {
+  local file="$1"
+  command -v convert >/dev/null 2>&1 || return 0
+  command -v identify >/dev/null 2>&1 || return 0
+  [[ -f "$file" ]] || return 0
+
+  local w h
+  read -r w h < <(identify -format "%w %h" "$file")
+  if (( w <= 2 || h <= 2 )); then
+    return 0
+  fi
+
+  local c1 c2 c3 c4 c5
+  c1="$(convert "$file" -format "%[pixel:p{0,0}]" info:)"
+  c2="$(convert "$file" -format "%[pixel:p{$((w-1)),0}]" info:)"
+  c3="$(convert "$file" -format "%[pixel:p{0,$((h-1))}]" info:)"
+  c4="$(convert "$file" -format "%[pixel:p{$((w-1)),$((h-1))}]" info:)"
+  c5="$(convert "$file" -format "%[pixel:p{1,1}]" info:)"
+
+  if is_black_pixel "$c1" && is_black_pixel "$c2" && is_black_pixel "$c3" && is_black_pixel "$c4" && ! is_black_pixel "$c5"; then
+    convert "$file" -shave 1x1 "$file"
+  fi
+}
+
 detect_session() {
   local desktop="${XDG_CURRENT_DESKTOP:-}"
   desktop="${desktop,,}"
@@ -30,13 +59,15 @@ detect_session() {
 
 take_hyprland_shot() {
   pkill slurp || true
+  local output_file="$OUTPUT_DIR/screenshot-$(timestamp).png"
   hyprshot -m "$MODE" --raw |
     satty --filename - \
-      --output-filename "$OUTPUT_DIR/screenshot-$(timestamp).png" \
+      --output-filename "$output_file" \
       --early-exit \
       --actions-on-enter save-to-clipboard \
       --save-after-copy \
       --copy-command 'wl-copy'
+  trim_black_border "$output_file"
 }
 
 take_i3_shot() {
@@ -49,12 +80,15 @@ take_i3_shot() {
   case "$MODE" in
     output)
       flameshot screen --clipboard --path "$output_file"
+      trim_black_border "$output_file"
       ;;
     window)
       flameshot gui --clipboard --path "$output_file" --accept-on-select --region window
+      trim_black_border "$output_file"
       ;;
     *)
       flameshot gui --clipboard --path "$output_file" --accept-on-select
+      trim_black_border "$output_file"
       ;;
   esac
 }
