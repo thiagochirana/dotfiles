@@ -51,6 +51,22 @@ local function night_options()
   return {
     style = "night",
     transparent = false,
+    dim_inactive = true,
+    styles = {
+      sidebars = "dark",
+      floats = "dark",
+    },
+    on_colors = function(colors)
+      -- Make the dark variant noticeably darker without going full-black.
+      colors.bg = "#0b0f1a"
+      colors.bg_dark = "#070a12"
+      colors.bg_float = "#0b0f1a"
+      colors.bg_popup = "#0b0f1a"
+      colors.bg_statusline = "#070a12"
+      colors.bg_sidebar = "#070a12"
+      colors.bg_highlight = "#121a2a"
+      colors.fg_gutter = "#2a3551"
+    end,
     on_highlights = function(highlights)
       highlights.IblIndent = { fg = "#3b4261" }
       highlights.IblScope = { fg = "#7aa2f7", bold = true }

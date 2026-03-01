@@ -116,7 +116,7 @@ eza_params=('--git' '--icons' '--classify' '--group-directories-first' '--time-s
 alias ls='eza $eza_params'
 alias lsa="ls -la"
 alias l='eza --git-ignore $eza_params'
-alias ll='eza --all --header --long $eza_params'
+alias ll='eza --all --header --long $eza_params -o'
 alias llm='eza --all --header --long --sort=modified $eza_params'
 alias la='eza -lbhHigUmuSa --header'
 alias lx='eza -lbhHigUmuSa@'
@@ -148,4 +148,9 @@ export PATH=/home/chira/.opencode/bin:$PATH
 alias nrd="npm run dev"
 alias ni="npm install"
 alias brd="bun run dev"
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/chira/.lmstudio/bin"
+# End of LM Studio CLI section
 
