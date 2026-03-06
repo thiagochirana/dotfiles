@@ -107,6 +107,8 @@ alias polyl="polybar-msg cmd restart"
 alias nvc="$EDITOR $HOME/.config/nvim"
 alias wsc="windsurf"
 
+alias rpg="sudo systemctl restart postgresql"
+
 # ============================================================
 # Aliases - Eza
 # ============================================================
